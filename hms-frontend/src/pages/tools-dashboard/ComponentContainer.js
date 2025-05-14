@@ -3,6 +3,8 @@ import { useUserContext } from "../../context/userContext";
 import AdminMain from "../../components/admin-component/admin-main/AdminMain";
 import DoctorMain from "../../components/doctor-component/doctor-main/DoctorMain";
 import PatientMain from "../../components/patient-component/patient-main/PatientMain";
+import MedicalRecord from "../../components/patient-component/patient-main/MedicalRecord";
+import MyDashboard from "../../components/patient-component/patient-main/MyDashboard";
 
 const adminComponentList = {
   "/admin": <AdminMain />,
@@ -11,7 +13,9 @@ const doctorComponentList = {
   "/doctor": <DoctorMain />,
 };
 const patientComponentList = {
+  "/my-dashboard": <MyDashboard />,
   "/patient": <PatientMain />,
+  "/medical-record": <MedicalRecord />,
 };
 function Componentcontainer({ pathname }) {
   const { user } = useUserContext();

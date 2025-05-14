@@ -1,46 +1,45 @@
-
 import { useUserContext } from "../../context/userContext";
-import React from 'react'
 
 function SideNavList() {
+  let sideNav = null;
+  const { user } = useUserContext();
 
-let sideNav=null;
-const {user}=useUserContext();
-
-switch (user) {
-  case "admin":
-    // Render admin components
-    sideNav = [
-      { segment: "admin", title: "Admin" },
-      // { segment: "doctor", title: "Doctor" },
-      // { segment: "patient", title: "Patient" },
-      // { segment: "Imagegenerator", title: "Image Generator" },
-    ];
-    break;
-  case "doctor":
-    // Render user components
-    sideNav = [
-      { segment: "doctor", title: "Doctor" },
-      // { segment: "patient", title: "Patient" },
-      // { segment: "Imagegenerator", title: "Image Generator" },
-    ];
-    break;
-  case "patient":
-    // Handle unknown roles or redirect to a default component
-    sideNav = [
-      { segment: "patient", title: "Patient" },
-      // { segment: "Imagegenerator", title: "Image Generator" },
-    ];
-    break;
-  default:
-    // Handle unknown roles or redirect to a default component
-    sideNav = [
-      { segment: "patient", title: "Patient" },
-      // { segment: "Imagegenerator", title: "Image Generator" },
-    ];
-    break;
+  switch (user) {
+    case "admin":
+      // Render admin components
+      sideNav = [
+        { segment: "admin", title: "Admin" },
+        // { segment: "doctor", title: "Doctor" },
+        // { segment: "patient", title: "Patient" },
+        // { segment: "Imagegenerator", title: "Image Generator" },
+      ];
+      break;
+    case "doctor":
+      // Render user components
+      sideNav = [
+        { segment: "doctor", title: "Doctor" },
+        // { segment: "patient", title: "Patient" },
+        // { segment: "Imagegenerator", title: "Image Generator" },
+      ];
+      break;
+    case "patient":
+      // Handle unknown roles or redirect to a default component
+      sideNav = [
+        { segment: "my-dashboard", title: "Dashboard" },
+        { segment: "patient", title: "My Appointments" },
+        { segment: "medical-record", title: "Medical Records" },
+        // { segment: "Imagegenerator", title: "Image Generator" },
+      ];
+      break;
+    default:
+      // Handle unknown roles or redirect to a default component
+      sideNav = [
+        { segment: "patient", title: "Patient" },
+        // { segment: "Imagegenerator", title: "Image Generator" },
+      ];
+      break;
+  }
+  // Default to MainDashboard if path is empty or unrecognized
+  return sideNav;
 }
-// Default to MainDashboard if path is empty or unrecognized
-  return sideNav
-}
-export default SideNavList
+export default SideNavList;

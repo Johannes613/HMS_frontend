@@ -1,0 +1,70 @@
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+.patient-main-dashboard {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+.patient-main-dashboard-header {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.patient-main-dashboard-header h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 0;
+}
+.patient-main-dashboard-header .patient-main-dashboard-icon {
+  color: #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: white; */
+}
+/* .patient-main-dashboard h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+} */
+.patient-main-dashboard p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+/* style action buttons */
+
+.patient-main-dashboard .action-buttons {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+.patient-main-dashboard .action-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.patient-main-dashboard .action-buttons button:hover {
+  background-color: #0056b3;
+}
+.patient-main-dashboard .action-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.patient-main-dashboard .action-buttons button:disabled:hover {
+  background-color: #ccc;
+}
+.patient-main-dashboard .action-buttons button + button {
+  margin-left: 10px;
+}
