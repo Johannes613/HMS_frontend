@@ -1,5 +1,168 @@
-import React from "react";
+import React, { use, useEffect, useState } from "react";
+import "./DoctorMain.css"; 
+import doc_prof from "../../../images/doc_prof.png";
 
 export default function DoctorMain() {
-  return <div>DoctorMain</div>;
+  const [data, setData] = useState([]);
+  const [totalPatients, setTotalPatients] = useState(0);
+  const [completedAppts, setCompletedAppts] = useState(0);
+  const [lastWeekAppts, setLastWeeksAppts] = useState(0);
+  useEffect(() => {
+    const fetchAppointments= async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/appointmentDetails',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ 
+            doc_id: 1
+           }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const result = await response.json();
+        setData(result);
+        
+       
+        
+      } catch (error) {
+        console.error('Error fetching patient visit trend:', error);
+      } 
+    };
+    const fetchTotalPatients= async () => {
+      try{
+        const response = await fetch('http://localhost:5000/appointmentStat/totalPatients');
+
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        console.log('Fetched data:', response);
+        const result = await response.json();
+        setTotalPatients(result[0].total_patients);
+        console.log('Fetched data:', result[0].total_patients);
+      }catch (error) {
+        console.error('Error fetching patient number:', error);
+      }
+    }
+    const fetchCompletedAppts= async () => {
+      try{
+        const response = await fetch('http://localhost:5000/appointmentStat/totalCompletedAppts');
+
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        console.log('Fetched data:', response);
+        const result = await response.json();
+        setCompletedAppts(result[0].count);
+      }catch (error) {
+        console.error('Error fetching  appts:', error);
+      }
+    }
+    const fetchLastWeekList= async () => {
+      try{
+        const response = await fetch('http://localhost:5000/appointmentStat/lastWeekAppts');
+
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        console.log('Fetched data:', response);
+        const result = await response.json();
+        setLastWeeksAppts(result[0].count);
+      }catch (error) {
+        console.error('Error fetching  last week appts:', error);
+      }
+    }
+    fetchAppointments();
+    fetchTotalPatients();
+    fetchCompletedAppts();
+    fetchLastWeekList();
+  }, []);
+
+
+  return(
+     <div className="dashboard-container">
+      <div className="dashboard-content">
+        <div className="dashboard-header">
+          <h1>Doctor Dashboard</h1>
+          <div className="dashboard-profile">
+           
+            <img
+              src={doc_prof}
+              alt="Profile"
+              className="profile-image"
+            />
+          </div>
+        </div>
+
+        <div className="grid-container">
+          <div className="card appointments">
+            <h2>Today's Appointments</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Patient</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                 {data.map((appointment) => (
+                  <tr key={appointment.id}>
+                    <td>{appointment.patient_name}</td>
+                    <td>{appointment.appt_time}</td>
+                    <td>{appointment.appt_status}</td>
+                  </tr>
+                ))}
+              
+              </tbody>
+            </table>
+          </div>
+
+          <div className="card surgeries">
+            <h2>Cancelled appointments</h2>
+            <ul>
+              <li>Hernia Repair</li>
+              <li>Knee Arthroscopy</li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="grid-container">
+          <div className="card summary">
+            <h2>Patient Summary</h2>
+            <div className="summary-row">
+              <div>
+                <div className="summary-label">Total Patients</div>
+                <div className="summary-value">{totalPatients}</div>
+              </div>
+              <div>
+                <div className="summary-label">This Week's Visits</div>
+                <div className="summary-value">{lastWeekAppts}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card summary">
+            <h2>Appointment Summary</h2>
+            <div>
+              <div className="summary-label">Completed Appointments</div>
+              <div className="summary-value">{completedAppts}</div>
+            </div>
+          </div>
+
+          <div className="card quick-actions">
+            <h2>Quick Actions</h2>
+            <button className="action-button">Add Prescription</button>
+            <button className="action-button">View Schedule</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

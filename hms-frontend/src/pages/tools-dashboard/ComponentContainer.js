@@ -3,12 +3,19 @@ import { useUserContext } from "../../context/userContext";
 import AdminMain from "../../components/admin-component/admin-main/AdminMain";
 import DoctorMain from "../../components/doctor-component/doctor-main/DoctorMain";
 import PatientMain from "../../components/patient-component/patient-main/PatientMain";
+import AppointmentList from "../../components/doctor-component/appointment-list/AppointmentList";
+import PatientList from "../../components/doctor-component/patient-list/PatientList";
+import MedicalRecordList from "../../components/doctor-component/medical-record-list/MedicalRecordList";
 
 const adminComponentList = {
   "/admin": <AdminMain />,
 };
 const doctorComponentList = {
   "/doctor": <DoctorMain />,
+  "/doctorAppointment": <AppointmentList/>,
+  "/patientList": <PatientList/>,
+  "/medicaRecordList": <MedicalRecordList/>,
+
 };
 const patientComponentList = {
   "/patient": <PatientMain />,

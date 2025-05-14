@@ -1,0 +1,132 @@
+/* DoctorDashboard.css */
+
+.dashboard-container {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  color: #1f2937;
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.dashboard-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.dashboard-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification-button {
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ccc;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+ padding-top: 15px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  padding-bottom: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.card table th,
+.card table td {
+  padding: 8px 0;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.card ul {
+  list-style: disc;
+  padding-left: 20px;
+  font-size: 14px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-label {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.summary-value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.quick-actions .action-button {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  padding: 11px;
+  margin-bottom: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.card.surgeries ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card.surgeries li {
+  background-color: #f3f4f6;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+

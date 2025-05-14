@@ -20,7 +20,10 @@ switch (user) {
   case "doctor":
     // Render user components
     sideNav = [
-      { segment: "doctor", title: "Doctor" },
+      { segment: "doctor", title: "Main Dashboard" },
+      { segment: "doctorAppointment", title: "Appointments" },
+      { segment: "patientList", title: "Patients" },
+      { segment: "medicaRecordList", title: "Medical Records" },
       // { segment: "patient", title: "Patient" },
       // { segment: "Imagegenerator", title: "Image Generator" },
     ];
