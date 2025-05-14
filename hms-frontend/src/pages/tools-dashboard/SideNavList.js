@@ -1,11 +1,9 @@
-
 import { useUserContext } from "../../context/userContext";
-import React from 'react'
 
 function SideNavList() {
+  let sideNav = null;
+  const { user } = useUserContext();
 
-let sideNav=null;
-const {user}=useUserContext();
 
 switch (user) {
   case "admin":
@@ -31,8 +29,9 @@ switch (user) {
   case "patient":
     // Handle unknown roles or redirect to a default component
     sideNav = [
-      { segment: "patient", title: "Patient" },
-      // { segment: "Imagegenerator", title: "Image Generator" },
+       { segment: "my-dashboard", title: "Dashboard" },
+        { segment: "patient", title: "My Appointments" },
+        { segment: "medical-record", title: "Medical Records" },
     ];
     break;
   default:
@@ -42,8 +41,9 @@ switch (user) {
       // { segment: "Imagegenerator", title: "Image Generator" },
     ];
     break;
+ 
+  
 }
-// Default to MainDashboard if path is empty or unrecognized
-  return sideNav
+return sideNav;
 }
-export default SideNavList
+export default SideNavList;

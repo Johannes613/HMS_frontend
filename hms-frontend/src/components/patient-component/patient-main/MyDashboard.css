@@ -1,0 +1,220 @@
+.user-profile-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.my-dashboard-h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #3a3e42;
+  padding-bottom: 10px;
+  line-height: 2;
+}
+.user-profile-card .user-profile-img {
+  margin-bottom: 20px;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-profile-card .user-profile-img img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #007bff;
+}
+.user-profile-card h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #3a3e42;
+  padding-bottom: 10px;
+  line-height: 2;
+}
+.user-profile-card p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  font-weight: bold;
+}
+.user-profile-card p span {
+  color: #666;
+  font-weight: normal;
+  display: inline-block;
+  margin-left: 16px;
+}
+.user-profile-card .update-profile-button button {
+  background-color: #007bff;
+  width: 100%;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.user-profile-card .update-profile-button button:hover {
+  background-color: #0056b3;
+}
+
+.appointment-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+.appointment-card h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.appointment-card p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+}
+.appointment-card .appointment-date {
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+}
+.appointment-card .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+.appointment-card .table th,
+.appointment-card .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.appointment-card .table th {
+  background-color: #f2f2f2 !important;
+  text-align: left;
+  color: #333 !important;
+}
+.appointment-card .table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.appointment-card .table tr:hover {
+  background-color: #f1f1f1;
+}
+.appointment-card .table th {
+  background-color: #007bff;
+  color: white;
+}
+.appointment-card .table td {
+  color: #333;
+}
+.appointment-card .table .action-button {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.appointment-card .table .action-button:hover {
+  background-color: #004494;
+}
+.appointment-card .action-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.appointment-card .action-buttons button:hover {
+  background-color: #0056b3;
+}
+/* UPDATE RESCHEDULING MODAL CSS */
+
+.update-appointment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* width: 100%; */
+  /* max-width: 400px; */
+  margin: 0 auto;
+  position: relative;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.update-appointment-form .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+  align-items: center;
+  justify-content: left;
+}
+.update-appointment-form .form-group label {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.update-appointment-form .form-group input,
+.update-appointment-form .form-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
+.reschedule-modal-h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.update-appointment-form .form-group input[type="date"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
+.update-appointment-form .form-group input[type="time"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
+.update-appointment-form .form-group input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  color: #333;
+}
