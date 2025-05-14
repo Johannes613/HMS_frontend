@@ -1,19 +1,21 @@
 import { Box } from "@mui/material";
 import { useUserContext } from "../../context/userContext";
+import AdminMain from "../../components/admin-component/admin-main/AdminMain";
+import DoctorMain from "../../components/doctor-component/doctor-main/DoctorMain";
+import PatientMain from "../../components/patient-component/patient-main/PatientMain";
 
-  const adminComponentList = {
- 
-  };
-    const doctorComponentList = {
-
-  };
-    const patientComponentList = {
-
-  };
-
+const adminComponentList = {
+  "/admin": <AdminMain />,
+};
+const doctorComponentList = {
+  "/doctor": <DoctorMain />,
+};
+const patientComponentList = {
+  "/patient": <PatientMain />,
+};
 function Componentcontainer({ pathname }) {
-  const {user}=useUserContext();
-  let componentList=null;
+  const { user } = useUserContext();
+  let componentList = null;
   switch (user) {
     case "admin":
       // Render admin components
@@ -33,9 +35,8 @@ function Componentcontainer({ pathname }) {
       break;
   }
 
-
   // Default to MainDashboard if path is empty or unrecognized
-  const componentToRender = componentList[pathname] ;
+  const componentToRender = componentList[pathname];
   // const componentToRender = componentList[pathname] || <MainDashboard />;
 
   return (

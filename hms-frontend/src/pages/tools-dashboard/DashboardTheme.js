@@ -4,7 +4,7 @@ export const customTheme = createTheme({
   cssVariables: {
     colorSchemeSelector: "data-toolpad-color-scheme",
   },
-  colorSchemes: { dark: true },
+  colorSchemes: { dark: false },
   breakpoints: {
     values: {
       xs: 0,
