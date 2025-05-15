@@ -18,7 +18,7 @@ const AdminPatient = () => {
   const fetchPatients = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3000/four-six/patients",
+        "http://localhost:5000/four-six/patients",
         {
           params: {
             age: ageGroup,

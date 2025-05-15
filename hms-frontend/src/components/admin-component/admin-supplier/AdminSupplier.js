@@ -16,7 +16,7 @@ function AdminSupplier() {
 
   const fetchSuppliers = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/suppliers");
+      const response = await axios.get("http://localhost:5000/suppliers");
       const data = response.data;
       console.log(data);
       const formattedData = data.map((item) => ({
