@@ -1,0 +1,4 @@
+.custom-modal .modal-dialog {
+    max-width: 450px !important;
+    padding: 20px;
+  }

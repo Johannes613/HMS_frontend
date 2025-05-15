@@ -1,0 +1,27 @@
+div.appointment{
+    margin-top: 60px !important;
+    background-color: var(--gray-color);
+    padding: 90px 0;
+}
+div.apt-cont{
+    background-color: white !important;
+    height: auto !important;
+}
+.inputs{
+    background-color: var(--gray-color) !important;
+    border: none !important;
+    border-radius: 2px !important;
+    margin-top: 20px !important;
+    font-size: 17px !important;
+
+}
+p.tag{
+    font-size: 18px !important;
+    font-weight: 500;
+    
+}
+img.appt-img{
+    height: 82vh;
+    width: 80% !important;
+    object-fit: cover;
+}

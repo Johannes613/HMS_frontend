@@ -1,0 +1,40 @@
+img.logo-img {
+  width: 150px;
+}
+.nav-link {
+  text-transform: uppercase !important;
+  color: var(--title-color) !important  ;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  font-size: 15px !important;
+}
+div.nav-bar {
+  background-color: white !important;
+  /* position: fixed; */
+  position: absolute;
+  width: 100%;
+  z-index: 10000;
+}
+div.nav-bar {
+  box-shadow: 0px 5px 35px rgba(57, 56, 61, 0.205);
+}
+
+div.nav-bar .bg-body-tertiary {
+  background-color: white !important;
+}
+.add-shadow {
+  box-shadow: 0px 2px 5px rgba(57, 56, 61, 0.205);
+}
+
+.nav-link:hover {
+  color: var(--primary-color) !important;
+}
+.contact-btns {
+  background: var(--primary-color) !important;
+  border: none !important;
+  color: white !important;
+}
+.to-dashboard{
+  padding: 7px 10px !important;
+  font-size: 15px !important;
+}

@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import "./MyDashboard.css";
 import axios from "axios";
-
+import { Navigate } from "react-router-dom";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -37,7 +37,7 @@ export default function CustomizedDialogs({ id }) {
     setOpen(false);
     try {
       const response = await axios.put(
-        "http://localhost:3000/appointment/" + appointmentId,
+        "http://localhost:5000/appointment/" + appointmentId,
         {
           date: date,
           time: time,
@@ -47,6 +47,10 @@ export default function CustomizedDialogs({ id }) {
     } catch (error) {
       console.error("Error updating appointment:", error);
     }
+    window.location.reload();
+    
+
+    
   };
   return (
     <React.Fragment>

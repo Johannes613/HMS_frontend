@@ -5,20 +5,15 @@
   display: none !important ;
 }
 .css-1d9cypr-MuiStack-root::after {
-  content: "ClearSpeak AI";
+  content: "Heaven";
   display: block;
   font-size: 1.3rem;
   position: absolute;
   left: 80px;
   overflow: hidden;
   font-weight: 700;
-  background: linear-gradient(
-    90deg,
-    #7b3effa4 45.53%,
-    #00c3ffb0 100%
-  ) !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
+  color: var(--primary-color);
+
 }
 .css-gnvwx2 {
   background-color: white !important;

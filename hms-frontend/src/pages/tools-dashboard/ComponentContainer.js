@@ -10,12 +10,16 @@ import MedicalRecord from "../../components/patient-component/patient-main/Medic
 import MyDashboard from "../../components/patient-component/patient-main/MyDashboard";
 import AdminPatient from "../../components/admin-component/adminPatient/AdminPatient";
 import AdminSupplier from "../../components/admin-component/admin-supplier/AdminSupplier";
+import MainDashboard from "../../components/admin-component/main-dashboard/MainDashboard";
+import ApptList from "../../components/admin-component/appointment-list/ApptList";
 
 const adminComponentList = {
-  "/admin": <AdminMain />,
+  "/admin": <MainDashboard />,
+  "/apptList":<ApptList/>,
   "/admin-patient": <AdminPatient />,
   "/admin-supplier": <AdminSupplier />,
-};
+}
+
 const doctorComponentList = {
   "/doctor": <DoctorMain />,
   "/doctorAppointment": <AppointmentList />,
@@ -50,7 +54,7 @@ function Componentcontainer({ pathname }) {
   }
 
   // Default to MainDashboard if path is empty or unrecognized
-  const componentToRender = componentList[pathname];
+  const componentToRender = componentList[pathname] || componentList[`/${user}`];
   // const componentToRender = componentList[pathname] || <MainDashboard />;
 
   return (

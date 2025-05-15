@@ -1,7 +1,8 @@
 import { useUserContext } from "../../context/userContext";
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import EventIcon from "@mui/icons-material/Event";
 
 function SideNavList() {
   let sideNav = null;
@@ -11,9 +12,23 @@ function SideNavList() {
     case "admin":
       // Render admin components
       sideNav = [
-        { segment: "admin", title: "Admin", icon: <AdminPanelSettingsIcon /> },
-        { segment: "admin-patient", title: "Patients", icon: <LocalHospitalIcon /> },
-        { segment: "admin-supplier", title: "Suppliers", icon: <LocalShippingIcon /> },
+        {
+          segment: "admin",
+          title: "Main Dashboard",
+          icon: <AdminPanelSettingsIcon />,
+        },
+        {
+          segment: "admin-patient",
+          title: "Patients",
+          icon: <LocalHospitalIcon />,
+        },
+        {
+          segment: "admin-supplier",
+          title: "Suppliers",
+          icon: <LocalShippingIcon />,
+        },
+
+        { segment: "apptList", title: "Appointments", icon: <EventIcon /> },
         // { segment: "doctor", title: "Doctor" },
         // { segment: "patient", title: "Patient" },
         // { segment: "Imagegenerator", title: "Image Generator" },
@@ -44,8 +59,46 @@ function SideNavList() {
         { segment: "patient", title: "Patient" },
         // { segment: "Imagegenerator", title: "Image Generator" },
       ];
-      break;
   }
+
+  // switch (user) {
+  //   case "admin":
+  //     // Render admin components
+  //     sideNav = [
+  //       { segment: "admin", title: "Main Dashboard" },
+  //       { segment: "apptList", title: "Appointments" },
+  //       // { segment: "doctor", title: "Doctor" },
+  //       // { segment: "patient", title: "Patient" },
+  //       // { segment: "Imagegenerator", title: "Image Generator" },
+  //     ];
+  //     break;
+  //   case "doctor":
+  //     // Render user components
+  //     sideNav = [
+  //       { segment: "doctor", title: "Main Dashboard" },
+  //       { segment: "doctorAppointment", title: "Appointments" },
+  //       { segment: "patientList", title: "Patients" },
+  //       { segment: "medicaRecordList", title: "Medical Records" },
+  //       // { segment: "patient", title: "Patient" },
+  //       // { segment: "Imagegenerator", title: "Image Generator" },
+  //     ];
+  //     break;
+  //   case "patient":
+  //     // Handle unknown roles or redirect to a default component
+  //     sideNav = [
+  //       { segment: "my-dashboard", title: "Dashboard" },
+  //       { segment: "patient", title: "My Appointments" },
+  //       { segment: "medical-record", title: "Medical Records" },
+  //     ];
+  //     break;
+  //   default:
+  //     // Handle unknown roles or redirect to a default component
+  //     sideNav = [
+  //       { segment: "patient", title: "Patient" },
+  //       // { segment: "Imagegenerator", title: "Image Generator" },
+  //     ];
+  //     break;
+  // }
   return sideNav;
 }
 export default SideNavList;

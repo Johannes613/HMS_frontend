@@ -1,0 +1,13 @@
+.each-blog{
+    border-radius: 0 !important;
+    border: none !important;
+    background-color: white;
+}
+div.blogs{
+    background-color: var(--gray-color);
+    padding-top: 40px;
+}
+img.blog-img{
+    height: 270px;
+    object-fit: cover;
+}

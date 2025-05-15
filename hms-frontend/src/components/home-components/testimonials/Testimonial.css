@@ -1,0 +1,45 @@
+div.each-test {
+  margin: 20px;
+  box-shadow: 0px 5px 10px rgba(57, 56, 61, 0.205);
+  cursor: pointer;
+  background-color: var(--gray-color);
+  height: 240px;
+}
+div.each-test img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+div.testimonial{
+  margin-top: 100px;
+}
+p.dec {
+  font-size: 16px;
+}
+.test-name{
+  font-size: 16px !important;
+}
+.quote {
+  color: var(--primary-color) !important;
+  opacity: 0.1;
+}
+.custom-dot-list-style {
+  position: absolute !important;
+  top: 360px;
+}
+.custom-dot-list-style button {
+  border: none !important;
+  background-color: rgb(214, 214, 214);
+}
+.react-multi-carousel-dot--active button {
+  background-color: #4458dc !important;
+}
+.carousel-second {
+  height: 450px;
+  margin-bottom: 50px;
+}
+p.test-field {
+  color: var(--primary-color);
+  font-weight: 400;
+  font-size: 14px;
+}

@@ -1,0 +1,16 @@
+div.services .serv-icon{
+    width: 80px !important;
+    height: 80px !important;
+}
+p.read-more-text{
+    color: var(--primary-color) !important;
+    font-size: 15px;
+    font-weight: 550;
+    cursor: pointer;
+}
+.each-services{
+   
+    border-radius: 0 !important;
+    border:none !important;
+    min-height: 320px !important;
+}

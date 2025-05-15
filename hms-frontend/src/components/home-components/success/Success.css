@@ -1,0 +1,27 @@
+div.right-success{
+    background-color: var(--primary-dark);
+}
+div.left-success{
+    background-color: var(--gray-color) !important;
+    padding-left: 6vw !important;
+    padding-right: 6vw !important;
+}
+img.icon-infection{
+    width: 90px;
+    height: 100px;
+}
+p.success-tag{
+    width: 150px;
+}
+div.success{
+    margin-top: 150px;
+}
+div.stat{
+    color: white;
+    margin-left: 7vw;
+
+}
+h2.about-head{
+    font-weight: 600;
+    font-size: 2.8rem;
+}

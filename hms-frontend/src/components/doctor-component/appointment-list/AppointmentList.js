@@ -21,7 +21,6 @@ const AppointmentList = () => {
             }),
           }
         );
-
         if (!response.ok) {
           throw new Error("Failed to fetch full appointment list");
         }

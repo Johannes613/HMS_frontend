@@ -56,7 +56,7 @@ export default function MedicalRecordTable() {
   }, []);
   const fetchMedicalRecords = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/medicalRecord/1");
+      const response = await axios.get("http://localhost:5000/medicalRecord/1");
       const data = response.data;
       console.log(data);
       const formattedData = data.map((record, index) => ({
