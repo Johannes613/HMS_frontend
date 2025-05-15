@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AdminSupplier.css";
 import axios from "axios";
-import SupplierTable from "./SupplierTable";
+import SupplierTable from "./SupplierTable.js";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import "../../doctor-component/patient-list/PatientList.css";
 function AdminSupplier() {

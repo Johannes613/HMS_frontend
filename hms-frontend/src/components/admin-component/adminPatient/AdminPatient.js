@@ -46,7 +46,7 @@ const AdminPatient = () => {
   };
 
   return (
-    <div className="appointments-container">
+    <div className="patients-container">
       <div className="admin-patient-main-dashboard-header">
         <GroupIcon className="admin-patient-main-dashboard-icon" />
         <h1>All patients</h1>

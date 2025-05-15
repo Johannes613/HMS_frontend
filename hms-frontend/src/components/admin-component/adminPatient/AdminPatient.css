@@ -1,3 +1,10 @@
+.patients-container {
+  padding: 40px;
+  padding-top: 15px;
+  background-color: #f9fafb;
+  font-family: "Inter", sans-serif;
+}
+
 .admin-patient-main-dashboard-header {
   display: flex;
   gap: 1rem;
