@@ -1,0 +1,30 @@
+.admin-supplier-main-dashboard-header {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+.header-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.admin-supplier-main-dashboard-header h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+.admin-supplier-main-dashboard-icon {
+  font-size: 2rem;
+  color: #1976d2;
+  margin-right: 10px;
+}

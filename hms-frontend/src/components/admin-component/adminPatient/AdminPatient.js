@@ -4,6 +4,7 @@ import "../../doctor-component/patient-list/PatientList.css";
 import PatientDataTable from "./PatientDataTable";
 import GroupIcon from "@mui/icons-material/Group";
 import axios from "axios";
+
 const AdminPatient = () => {
   const [patients, setPatients] = useState([]);
 
@@ -104,8 +105,7 @@ const AdminPatient = () => {
           </tbody>
         </table>
       </div> */}
-      <PatientDataTable rows={rows}/>
-     
+      <PatientDataTable rows={rows} />
     </div>
   );
 };
