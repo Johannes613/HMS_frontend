@@ -1,0 +1,13 @@
+div.footer{
+    background-color: var(--primary-dark);
+    color: white;
+    min-height: 250px;
+}
+img.footer-logo{
+    width: 160px;
+    /* margin: 0 !important; */
+}
+p.lower-text{
+    font-size: 17px;
+    margin-top: 10px;
+}

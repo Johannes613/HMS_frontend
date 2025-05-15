@@ -1,0 +1,136 @@
+.carousel-caption {
+  background-color: red !important;
+}
+
+div.over-lay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  color: black !important;
+  z-index: 5 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: start !important;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 255, 255, 0.5) 65%,
+    rgba(255, 255, 255, 0) 100%
+  ) !important;
+}
+
+p.tag {
+  color: #2490eb !important;
+  background-color: #d3e9fb !important;
+  display: inline-block !important;
+  padding: 5px !important;
+  border-radius: 5px !important;
+}
+
+div.content {
+  padding: 11% !important;
+}
+
+.hero {
+  width: 100% !important;
+  height: 110vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+p.desc {
+  font-size: 17px !important;
+  font-weight: 500 !important;
+}
+
+.carousel-indicators {
+  display: none !important;
+}
+
+.carousel-control-next {
+  justify-content: end !important;
+  padding-right: 10px !important;
+}
+
+.carousel-control-next-icon {
+  background-color: black !important;
+  padding: 10px !important;
+  border: 13px solid black !important;
+  border-radius: 5px !important;
+}
+
+div.content h1 {
+  font-size: 3.3rem !important;
+  font-weight: 650 !important;
+}
+
+.carousel-control-prev {
+  justify-content: start !important;
+  padding-left: 15px !important;
+}
+
+.carousel-control-prev-icon {
+  background-color: black !important;
+  padding: 10px !important;
+  border: 13px solid black !important;
+  border-radius: 5px !important;
+}
+
+.hero .carousel-item {
+  height: 100vh !important;
+}
+
+.hero .carousel-item img {
+  height: 100% !important;
+  width: 100% !important;
+  object-fit: cover !important;
+  object-position: right top !important;
+}
+
+div.row-over {
+  position: absolute !important;
+  top: 91% !important;
+  z-index: 111 !important;
+}
+
+div.each-info {
+  background-color: var(--primary-color) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.icon-img {
+  color: white !important;
+  width: 90px !important;
+  height: 85px !important;
+  object-fit: cover !important;
+}
+
+.card-title {
+  font-size: 1.8rem !important;
+  font-weight: 550 !important;
+}
+
+.phone-icon {
+  color: var(--primary-color) !important;
+  font-size: 33px !important;
+  padding: 7px !important;
+  border-radius: 50% !important;
+  background-color: white !important;
+}
+
+.flush-mat .list-group-item {
+  background: var(--primary-color) !important;
+  font-weight: 400 !important;
+  border: none !important;
+  border-bottom: 1px solid #ddd !important;
+  color: white !important;
+}
+
+#each-info {
+  background-color: var(--primary-dark) !important;
+}

@@ -147,7 +147,7 @@ export default function DataTable() {
   // fetch appointment data from the server
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/appointment/1");
+      const response = await axios.get("http://localhost:5000/appointment/1");
       const data = response.data;
       console.log(data);
       const formattedData = data.map((item, index) => ({

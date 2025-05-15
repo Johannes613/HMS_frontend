@@ -9,7 +9,8 @@ switch (user) {
   case "admin":
     // Render admin components
     sideNav = [
-      { segment: "admin", title: "Admin" },
+      { segment: "admin", title: "Main Dashboard" },
+      { segment: "apptList", title: "Appointments" },
       // { segment: "doctor", title: "Doctor" },
       // { segment: "patient", title: "Patient" },
       // { segment: "Imagegenerator", title: "Image Generator" },

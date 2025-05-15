@@ -1,0 +1,26 @@
+div.facilities{
+    margin-top: 100px;
+}
+img.serv-icon{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+.main-img{
+    width: 100px;
+    height: 350px;
+    object-fit: cover;
+    object-position: top left;
+    border-radius: 0 !important;
+}
+
+.main-card{
+    padding: 30px !important;
+    padding-bottom: 20px !important;
+    background-color: var(--gray-color) !important;
+    border: none !important;
+}
+p.head-serv{
+    color: var(--primary-color);
+    font-size: 20px;
+}

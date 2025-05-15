@@ -6,7 +6,9 @@ export default function DoctorMain() {
   const [data, setData] = useState([]);
   const [totalPatients, setTotalPatients] = useState(0);
   const [completedAppts, setCompletedAppts] = useState(0);
+  const [canceledAppts, setCanceled] = useState([]);
   const [lastWeekAppts, setLastWeeksAppts] = useState(0);
+  
   useEffect(() => {
     const fetchAppointments= async () => {
       try {
@@ -35,8 +37,6 @@ export default function DoctorMain() {
     const fetchTotalPatients= async () => {
       try{
         const response = await fetch('http://localhost:5000/appointmentStat/totalPatients');
-
-        
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -63,6 +63,20 @@ export default function DoctorMain() {
         console.error('Error fetching  appts:', error);
       }
     }
+    const fetchCanceledAppts= async () => {
+      try{
+        const response = await fetch('http://localhost:5000/appointmentStat/totalCanceledAppts');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        console.log('Fetched data:', response);
+        const result = await response.json();
+        setCanceled(result);
+      }catch (error) {
+        console.error('Error fetching cenecled:', error);
+      }
+    }
+  
     const fetchLastWeekList= async () => {
       try{
         const response = await fetch('http://localhost:5000/appointmentStat/lastWeekAppts');
@@ -82,6 +96,8 @@ export default function DoctorMain() {
     fetchTotalPatients();
     fetchCompletedAppts();
     fetchLastWeekList();
+    fetchCanceledAppts();
+   
   }, []);
 
 
@@ -127,9 +143,13 @@ export default function DoctorMain() {
           <div className="card surgeries">
             <h2>Cancelled appointments</h2>
             <ul>
-              <li>Hernia Repair</li>
-              <li>Knee Arthroscopy</li>
+              {canceledAppts.map((appointment) => (
+                <li>{appointment.appt_date.substring(0,10)} --- {appointment.reason}</li>
+              ))
+            }
             </ul>
+              
+            
           </div>
         </div>
 
@@ -158,7 +178,7 @@ export default function DoctorMain() {
 
           <div className="card quick-actions">
             <h2>Quick Actions</h2>
-            <button className="action-button">Add Prescription</button>
+            <button className="action-button">View All Appoitments</button>
             <button className="action-button">View Schedule</button>
           </div>
         </div>

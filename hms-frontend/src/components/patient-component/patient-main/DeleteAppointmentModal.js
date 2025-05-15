@@ -24,7 +24,7 @@ export default function AlertDialog({ id }) {
     setOpen(false);
     try {
       const response = await axios.delete(
-        "http://localhost:3000/appointment/" + appointmentId
+        "http://localhost:5000/appointment/" + appointmentId
       );
       console.log(response.data);
       if (response.status === 200) {
@@ -37,6 +37,7 @@ export default function AlertDialog({ id }) {
     } catch (error) {
       console.error("Error deleting appointment:", error);
     }
+     window.location.reload();
   };
 
   return (
