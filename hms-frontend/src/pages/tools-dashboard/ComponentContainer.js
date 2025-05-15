@@ -9,10 +9,12 @@ import MedicalRecordList from "../../components/doctor-component/medical-record-
 import MedicalRecord from "../../components/patient-component/patient-main/MedicalRecord";
 import MyDashboard from "../../components/patient-component/patient-main/MyDashboard";
 import AdminPatient from "../../components/admin-component/adminPatient/AdminPatient";
+import AdminSupplier from "../../components/admin-component/admin-supplier/AdminSupplier";
 
 const adminComponentList = {
   "/admin": <AdminMain />,
   "/admin-patient": <AdminPatient />,
+  "/admin-supplier": <AdminSupplier />,
 };
 const doctorComponentList = {
   "/doctor": <DoctorMain />,

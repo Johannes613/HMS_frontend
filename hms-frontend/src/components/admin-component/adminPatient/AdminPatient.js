@@ -6,6 +6,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import axios from "axios";
 const AdminPatient = () => {
   const [patients, setPatients] = useState([]);
+
   const [rows, setRows] = useState([]);
   const [gender, setGender] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
@@ -103,7 +104,8 @@ const AdminPatient = () => {
           </tbody>
         </table>
       </div> */}
-      <PatientDataTable rows={rows} />
+      <PatientDataTable rows={rows}/>
+     
     </div>
   );
 };
