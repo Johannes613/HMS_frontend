@@ -10,6 +10,7 @@ switch (user) {
     // Render admin components
     sideNav = [
       { segment: "admin", title: "Admin" },
+      {segment:"admin-patient",title:"Patients"},
       // { segment: "doctor", title: "Doctor" },
       // { segment: "patient", title: "Patient" },
       // { segment: "Imagegenerator", title: "Image Generator" },

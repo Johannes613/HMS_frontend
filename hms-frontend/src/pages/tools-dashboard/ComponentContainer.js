@@ -8,16 +8,17 @@ import PatientList from "../../components/doctor-component/patient-list/PatientL
 import MedicalRecordList from "../../components/doctor-component/medical-record-list/MedicalRecordList";
 import MedicalRecord from "../../components/patient-component/patient-main/MedicalRecord";
 import MyDashboard from "../../components/patient-component/patient-main/MyDashboard";
+import AdminPatient from "../../components/admin-component/adminPatient/AdminPatient";
 
 const adminComponentList = {
   "/admin": <AdminMain />,
+  "/admin-patient": <AdminPatient />,
 };
 const doctorComponentList = {
   "/doctor": <DoctorMain />,
-  "/doctorAppointment": <AppointmentList/>,
-  "/patientList": <PatientList/>,
-  "/medicaRecordList": <MedicalRecordList/>,
-
+  "/doctorAppointment": <AppointmentList />,
+  "/patientList": <PatientList />,
+  "/medicaRecordList": <MedicalRecordList />,
 };
 const patientComponentList = {
   "/my-dashboard": <MyDashboard />,

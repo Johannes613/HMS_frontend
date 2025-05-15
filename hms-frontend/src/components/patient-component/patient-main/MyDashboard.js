@@ -1,6 +1,7 @@
 import React from "react";
 import "./MyDashboard.css";
 import profileImage from "../../../assets/p1.png";
+import UpdateProfileModal from "./UpdateProfileModal";
 function MyDashboard() {
   return (
     <div className="patient-main-dashboard">
@@ -37,7 +38,7 @@ function MyDashboard() {
               Last Visit Date: <span>2023-10-01</span>
             </p>
             <div className="update-profile-button">
-              <button className="action-button">Update Profile</button>
+              <UpdateProfileModal />
             </div>
           </div>
         </div>

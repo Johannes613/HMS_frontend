@@ -1,0 +1,38 @@
+.update-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.update-profile-form .update-img-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.update-profile-form .form-group {
+  display: flex;
+  flex-direction: column;
+}
+.update-profile-form .form-group label {
+  font-weight: bold;
+}
+.update-profile-form .form-group input,
+.update-profile-form .form-group select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+.update-profile-form .form-group input:focus,
+.update-profile-form .form-group select:focus {
+  border-color: #1976d2;
+  outline: none;
+}

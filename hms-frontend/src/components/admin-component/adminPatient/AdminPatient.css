@@ -1,0 +1,19 @@
+.admin-patient-main-dashboard-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+.admin-patient-main-dashboard-header h1 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+.admin-patient-main-dashboard-header .admin-patient-main-dashboard-icon {
+  font-size: 2rem;
+  color: #1976d2;
+  margin-right: 10px;
+}
