@@ -4,15 +4,30 @@ import "../../doctor-component/patient-list/PatientList.css";
 import PatientDataTable from "./PatientDataTable";
 import GroupIcon from "@mui/icons-material/Group";
 import axios from "axios";
+import {
 
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+
+} from "recharts";
 const AdminPatient = () => {
   const [patients, setPatients] = useState([]);
 
   const [rows, setRows] = useState([]);
   const [gender, setGender] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
+  const [patientsByAge, setPatientsByAge] = useState([]);
+  const [patientsByGender, setPatientsByGender] = useState([]);
   useEffect(() => {
     fetchPatients();
+    fetchPatientsByAge();
+    // fetchPatientsByGender();
   }, [ageGroup, gender]);
 
   const fetchPatients = async () => {
@@ -44,6 +59,42 @@ const AdminPatient = () => {
       console.log(error);
     }
   };
+
+  //const patients By age
+  const fetchPatientsByAge = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/four-six/patients/age"
+      );
+      const data = response.data;
+      console.log(data);
+      const formattedData = data.map((item) => ({
+        age: item.age,
+        count: item.count,
+      }));
+      setPatientsByAge(formattedData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //fetch patients grouped by gender
+  // const fetchPatientsByGender = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       "http://localhost:5000/four-six/patients/by-gender"
+  //     );
+  //     const data = response.data;
+  //     console.log(data);
+  //     const formattedData = data.map((item) => ({
+  //       gender: item.age,
+  //       count: item.count,
+  //     }));
+  //     setPatientsByAge(formattedData);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div className="patients-container">
@@ -106,6 +157,30 @@ const AdminPatient = () => {
         </table>
       </div> */}
       <PatientDataTable rows={rows} />
+      <div className="chart-container">
+       
+        <div className="bar-chart-container">
+          <h2>Patient Age Distribution</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={patientsByAge}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="age" />
+              <YAxis dataKey="count" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="age" fill="#82ca9d" />
+              <Bar dataKey="count" fill="#8884d8" />
+            </BarChart>
+          </ResponsiveContainer>
+          <div className="chart-description">
+            <p>
+              This chart shows the distribution of patients by age. The x-axis
+              represents the age of the patients, while the y-axis represents
+              the number of patients in each age group.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

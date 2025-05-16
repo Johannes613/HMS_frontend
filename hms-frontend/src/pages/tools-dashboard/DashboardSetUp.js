@@ -11,12 +11,14 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
+import HomePage from "../home/HomePage";
+
 
 function DashboardSetUp() {
   const router = useDemoRouter("/dashboard");
   const sideNav = SideNavList();
   return (
-    <AppProvider navigation={sideNav} router={router} theme={customTheme}>
+    <AppProvider navigation={sideNav} router={router} theme={customTheme} >
       <DashboardLayout
         title="Tali"
         sx={{
@@ -24,48 +26,14 @@ function DashboardSetUp() {
             width: 290, // Mini sidebar width
             overflowX: "hidden",
             transition: "width 0.3s ease",
+            "&.MuiDrawer-open": {
+              width: 290, // Expanded sidebar width
+            },
+            //  style the sidebar links
           },
-        }}
-        headerProps={{
-          sx: {
-            backgroundColor: "black",
-            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-            padding: "0 16px",
-          },
-        }}
-        headerContent={
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-              ml: "auto",
-              color: "white",
-            }}
-          >
-            <h1 style={{ fontSize: "24px", margin: 0 }}>
-              Hospital Management System
-            </h1>
-          </Box>
-        }
 
-        // toolbarContent={
-        //   <Box
-        //     sx={{ display: "flex", alignItems: "center", gap: 2, ml: "auto" }}
-        //   >
-        //     <IconButton color="inherit">
-        //       <Badge badgeContent={3} color="error">
-        //         <MailIcon />
-        //       </Badge>
-        //     </IconButton>
-        //     <IconButton color="inherit">
-        //       <Badge badgeContent={5} color="error">
-        //         <NotificationsIcon />
-        //       </Badge>
-        //     </IconButton>
-        //     <Avatar alt="User" src="/user.jpg" />
-        //   </Box>
-        // }
+        }}
+  
       >
         <ComponentContainer pathname={router.pathname} />
       </DashboardLayout>

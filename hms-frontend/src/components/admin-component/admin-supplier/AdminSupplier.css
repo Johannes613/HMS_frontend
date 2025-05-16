@@ -28,3 +28,11 @@
   color: #1976d2;
   margin-right: 10px;
 }
+.chart-description p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
