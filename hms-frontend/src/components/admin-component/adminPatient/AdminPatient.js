@@ -23,28 +23,13 @@ const AdminPatient = () => {
   const [gender, setGender] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
   const [patientsByAge, setPatientsByAge] = useState([]);
-  const [patientsByGender, setPatientsByGender] = useState([]);
 
-  // format data for stacked bar chart
-  const transformDataForChart = (data) => {
-    const result = {};
-
-    data.forEach(({ Month_Name, description, count }) => {
-      if (!result[Month_Name]) {
-        result[Month_Name] = { month: Month_Name };
-      }
-      result[Month_Name][description] = count;
-    });
-
-    return Object.values(result); // Convert object to array
-  };
+  const allKeys = new Set();
 
   // const chartData = transformDataForChart(rawData);
   useEffect(() => {
     fetchPatients();
     fetchPatientsByAge();
-    fetchTreatmentProcedures();
-    // fetchPatientsByGender();
   }, [ageGroup, gender]);
 
   const fetchPatients = async () => {
@@ -114,28 +99,6 @@ const AdminPatient = () => {
   // };
 
   // fetch treatment procedures from the database
-  const fetchTreatmentProcedures = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5000/four-six/treatment-procedures"
-      );
-      const data = response.data;
-      console.log(data);
-      setFormattedData(transformDataForChart(data));
-      console.log(transformDataForChart(data));
-      console.log(formattedData)
-      console.log(data);
-      const formattedData = data.map((item) => ({
-        id: item.treatment_id,
-        name: item.treatment_name,
-        description: item.description,
-        price: item.price,
-      }));
-      // setPatientsByAge(formattedData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className="patients-container">
@@ -198,15 +161,15 @@ const AdminPatient = () => {
         </div>
         <div className="treatment-bar-chart">
           <h2>Different Treatment Procedures Over Months</h2>
-          <TreatmentBarChart data={formattedData} />
+          <TreatmentBarChart />
           <div className="chart-description">
             <p>
               This chart shows the distribution of patients by treatment
               procedures. The x-axis represents the month, while the y-axis
               represents the number of patients in each treatment procedure.
             </p>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

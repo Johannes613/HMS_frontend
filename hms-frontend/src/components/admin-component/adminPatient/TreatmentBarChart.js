@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -10,19 +11,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function TreatmentBarChart({ data }) {
-  // dummy treatment types
-  const treatmentTypes = [
-    "Appendectomy surgery",
-
-    "General health checkup",
-    "Physical therapy session",
-    "Root canal Surgery",
-    "Root canal procedure",
-    "Skin allergy treatment",
-    "Surgery",
-  ];
-
+function TreatmentBarChart() {
+  const [formattedData, setFormattedData] = useState([]);
+  const allKeys = new Set();
+  //  treatment types
+  const [treatments, setTreatments] = useState([]);
   const colors = [
     "#8884d8",
     "#82ca9d",
@@ -32,12 +25,47 @@ function TreatmentBarChart({ data }) {
     "#8a2be2",
     "#2e8b57",
   ]; // Add more if needed
+  useEffect(() => {
+    fetchTreatmentProcedures();
+  }, []);
+  const transformDataForChart = (data) => {
+    const result = {};
 
+    data.forEach(({ Month_Name, description, count }) => {
+      if (!result[Month_Name]) {
+        result[Month_Name] = { month: Month_Name };
+      }
+      result[Month_Name][description] = count;
+    });
+
+    return Object.values(result); // Convert object to array
+  };
+
+  const fetchTreatmentProcedures = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/four-six/treatment-procedures"
+      );
+      const data = response.data;
+      data.map((item) => {
+        allKeys.add(item.description);
+      });
+
+      setTreatments(Array.from(allKeys));
+
+      setFormattedData(transformDataForChart(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    console.log(treatments);
+  }, [treatments]);
 
   return (
     <ResponsiveContainer width="100%" height={400}>
       <BarChart
-        data={data}
+        data={formattedData}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -45,7 +73,7 @@ function TreatmentBarChart({ data }) {
         <YAxis />
         <Tooltip />
         <Legend />
-        {treatmentTypes?.map((type, index) => (
+        {treatments?.map((type, index) => (
           <Bar
             key={type}
             dataKey={type}
