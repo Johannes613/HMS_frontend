@@ -18,13 +18,13 @@ import TreatmentBarChart from "./TreatmentBarChart";
 const AdminPatient = () => {
   const [patients, setPatients] = useState([]);
   const [formattedData, setFormattedData] = useState([]);
+  const [year, setYear] = useState("2025");
 
   const [rows, setRows] = useState([]);
   const [gender, setGender] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
   const [patientsByAge, setPatientsByAge] = useState([]);
 
-  const allKeys = new Set();
 
   // const chartData = transformDataForChart(rawData);
   useEffect(() => {
@@ -80,25 +80,6 @@ const AdminPatient = () => {
     }
   };
 
-  //fetch patients grouped by gender
-  // const fetchPatientsByGender = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "http://localhost:5000/four-six/patients/by-gender"
-  //     );
-  //     const data = response.data;
-  //     console.log(data);
-  //     const formattedData = data.map((item) => ({
-  //       gender: item.age,
-  //       count: item.count,
-  //     }));
-  //     setPatientsByAge(formattedData);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // fetch treatment procedures from the database
 
   return (
     <div className="patients-container">
@@ -161,7 +142,23 @@ const AdminPatient = () => {
         </div>
         <div className="treatment-bar-chart">
           <h2>Different Treatment Procedures Over Months</h2>
-          <TreatmentBarChart />
+          <div className="filter-by-year">
+            <label htmlFor="" className="label-date">
+              Select year
+            </label>
+            <select
+              className="filter-select" 
+              onChange={(e) => setYear(e.target.value)}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2025" selected>2025</option>
+            </select>
+          </div>
+          <TreatmentBarChart year={year} />
           <div className="chart-description">
             <p>
               This chart shows the distribution of patients by treatment

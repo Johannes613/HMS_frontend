@@ -13,12 +13,15 @@ import AdminSupplier from "../../components/admin-component/admin-supplier/Admin
 import MainDashboard from "../../components/admin-component/main-dashboard/MainDashboard";
 import ApptList from "../../components/admin-component/appointment-list/ApptList";
 
+import AdminInventory from "../../components/admin-component/admin-inventory/AdminInventory";
+
 const adminComponentList = {
   "/admin": <MainDashboard />,
-  "/apptList":<ApptList/>,
+  "/apptList": <ApptList />,
   "/admin-patient": <AdminPatient />,
   "/admin-supplier": <AdminSupplier />,
-}
+  "/inventory": <AdminInventory />,
+};
 
 const doctorComponentList = {
   "/doctor": <DoctorMain />,
@@ -54,7 +57,8 @@ function Componentcontainer({ pathname }) {
   }
 
   // Default to MainDashboard if path is empty or unrecognized
-  const componentToRender = componentList[pathname] || componentList[`/${user}`];
+  const componentToRender =
+    componentList[pathname] || componentList[`/${user}`];
   // const componentToRender = componentList[pathname] || <MainDashboard />;
 
   return (

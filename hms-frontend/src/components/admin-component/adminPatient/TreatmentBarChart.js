@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function TreatmentBarChart() {
+function TreatmentBarChart({ year }) {
   const [formattedData, setFormattedData] = useState([]);
   const allKeys = new Set();
   //  treatment types
@@ -27,7 +27,7 @@ function TreatmentBarChart() {
   ]; // Add more if needed
   useEffect(() => {
     fetchTreatmentProcedures();
-  }, []);
+  }, [year]);
   const transformDataForChart = (data) => {
     const result = {};
 
@@ -44,15 +44,21 @@ function TreatmentBarChart() {
   const fetchTreatmentProcedures = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/four-six/treatment-procedures"
+        "http://localhost:5000/four-six/treatment-procedures",
+        {
+          params: {
+            year: year,
+          },
+        }
       );
       const data = response.data;
+      console.log(data);
+      allKeys.clear();
       data.map((item) => {
         allKeys.add(item.description);
       });
-
+      setFormattedData([]);
       setTreatments(Array.from(allKeys));
-
       setFormattedData(transformDataForChart(data));
     } catch (error) {
       console.log(error);

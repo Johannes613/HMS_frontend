@@ -83,7 +83,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   margin-top: 75px;
-  background-color: #EDD7FF;
+  background-color: #edd7ff;
 }
 .chart-container h2 {
   font-size: 1.5rem;
@@ -110,5 +110,33 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   margin-top: 75px;
-  background-color: #CEE8FE;
+  background-color: #cee8fe;
+}
+
+/* filter by year */
+
+.filter-by-year {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+.filter-by-year select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+.filter-by-year select:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+.filter-by-year select:hover {
+  border-color: #1976d2;
+}
+.filter-by-year label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
 }
