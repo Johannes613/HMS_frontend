@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./MainDashboard.css";
 import ProgressAnalytics from "./ProgressAnalytics";
 import doc_prof from "../../../images/doc_prof.png";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import VisitTrendChart from "./VisitTrendChart";
+import TopStatCard from "./TopStatCard";
 
 export default function MainDashboard() {
   const [totalPatients, setTotalPatients] = useState(0);
@@ -151,7 +154,7 @@ export default function MainDashboard() {
     <div className="dashboard-container">
       {/* Header Section */}
       <div className="dashboard-header">
-        <h1 style={{ color: "black" }}>Admin Dashboard</h1>
+        <h1 style={{ color: "black" }}> <DashboardIcon className="icons-appts"/> Admin Dashboard</h1>
         <div className="dashboard-profile">
           <img src={doc_prof} alt="Profile" className="profile-image" />
         </div>
@@ -160,9 +163,19 @@ export default function MainDashboard() {
       {/* Analytics Chart */}
       <div className="dashboard-header">
         <div className="graph-wrapper">
-          <ProgressAnalytics />
+          {/* <ProgressAnalytics /> */}
         </div>
       </div>
+      
+      <div className="trend">
+        <TopStatCard/>
+      </div>
+      <div className="trend">
+        <VisitTrendChart/>
+      </div>
+      
+
+
 
       {/* Usage Section */}
       <div className="usage-section">

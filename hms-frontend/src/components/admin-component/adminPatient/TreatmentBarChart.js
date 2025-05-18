@@ -92,4 +92,3 @@ function TreatmentBarChart({ year }) {
   );
 }
 export default TreatmentBarChart;
-// Example usage:

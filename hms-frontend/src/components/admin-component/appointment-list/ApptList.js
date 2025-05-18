@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./AppointmentList.css";
 import AlertDialog from "../../patient-component/patient-main/DeleteAppointmentModal";
 import CustomizedDialogs from "../../patient-component/patient-main/UpdateAppointmentModal";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 const ApptList = () => {
     const [appointments, setAppointments] = useState([]);
@@ -38,7 +39,7 @@ const ApptList = () => {
   }, [apptDate, apptStatus]);
   return (
     <div className="appointments-container">
-      <h1 className="appointments-title">All Appointments</h1>
+      <h1 className="appointments-title"><CalendarMonthIcon className="icons-appts"/> All Appointments</h1>
       <div className="appointments-filters">
         <label htmlFor="" className="label-date">
           Select start date
