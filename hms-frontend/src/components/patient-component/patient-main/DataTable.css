@@ -1,0 +1,8 @@
+.super-app-theme--header {
+  background-color: #1976d2 !important;
+  color: white;
+  font-weight: bold;
+}
+.action-btn:nth-child(1) {
+  margin-right: 5px;
+}

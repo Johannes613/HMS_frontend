@@ -1,26 +1,23 @@
-/* MainDashboard.css - Light Theme */
-
 .dashboard-container {
   padding: 2rem;
   padding-top: 10px;
-  background-color: #ffffff; /* White background */
+  background-color: #ffffff;
   font-family: 'Inter', sans-serif;
-  color: #1e293b; /* Dark gray text */
+  color: #1e293b; 
   min-height: 110vh;
 }
 
-/* Header Section */
 .dashboard-header {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1.7rem;
+  margin-bottom: 0.1rem;
 }
 
 .header-box,
 .balance-box,
 .time-box {
-  background-color: #f1f5f9; /* Light gray background */
+  background-color: #f1f5f9; 
   padding: 1.5rem;
   border-radius: 1rem;
   flex: 1;
@@ -29,10 +26,18 @@
   position: relative;
 }
 
+.trend{
+  margin-top: 60px !important;
+  h2{
+    text-align: center;
+    font-size: 23px !important;
+    margin-bottom: 30px;
+  }
+}
 .header-date {
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
-  color: #475569; /* Soft gray */
+  color: #475569; 
 }
 
 .header-welcome {
@@ -109,7 +114,7 @@
 .time-graph {
   height: 50px;
   position: relative;
-  background: #e2e8f0; /* Light background */
+  background: #e2e8f0; 
   border-radius: 8px;
   overflow: hidden;
 }
@@ -122,7 +127,6 @@
   background-size: cover;
 }
 
-/* Usage Section */
 .usage-section {
   background: #f1f5f9;
   padding: 1.5rem;
@@ -181,7 +185,6 @@
   );
 }
 
-/* Document Stats Section */
 .document-stats {
   display: flex;
   gap: 1rem;
@@ -213,4 +216,8 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--primary-color);
+}
+
+.recharts-default-legend{
+  margin-top: 30px !important;
 }

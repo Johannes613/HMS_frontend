@@ -40,7 +40,7 @@
 
 .appointments-table-wrapper {
   background-color: #ffffff;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   overflow-x: auto;
 }
@@ -60,9 +60,9 @@
 }
 
 .appointments-table th {
-  background-color: #e0f2fe; /* Light blue */
+  background-color: #1976d2;
   font-weight: 600;
-  color: #0369a1; /* Darker blue text */
+  color: white; 
 }
 
 .appointments-table td {
@@ -76,4 +76,11 @@
 .label-date{
     margin-top: 6px;
     margin-left: 10px;
+}
+.icons-appts{
+  color: #1976d2 !important;
+  margin-bottom: 5px;
+  width: 30px !important;
+  font-size: 30px !important;
+  margin-right: 7px;
 }

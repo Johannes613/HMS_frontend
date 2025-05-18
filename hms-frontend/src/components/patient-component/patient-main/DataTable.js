@@ -5,16 +5,33 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import AlertDialog from "./DeleteAppointmentModal";
 import CustomizedDialogs from "./UpdateAppointmentModal";
+import "./DataTable.css";
 
 const columns = [
-  { field: "date", headerName: "Date", width: 130 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
+  {
+    field: "date",
+    headerName: "Date",
+    width: 130,
+    headerClassName: "super-app-theme--header",
+  },
+  {
+    field: "firstName",
+    headerName: "First name",
+    width: 130,
+    headerClassName: "super-app-theme--header",
+  },
+  {
+    field: "lastName",
+    headerName: "Last name",
+    width: 130,
+    headerClassName: "super-app-theme--header",
+  },
   {
     field: "doctor",
     headerName: "Doctor",
     type: "text",
     width: 130,
+    headerClassName: "super-app-theme--header",
   },
   {
     field: "status",
@@ -22,14 +39,16 @@ const columns = [
     description: "This column has a value getter and is not sortable.",
     sortable: true,
     width: 130,
+    headerClassName: "super-app-theme--header",
   },
   {
     field: "cancel",
     headerName: "Action",
     width: 250,
+    headerClassName: "super-app-theme--header",
     renderCell: (params) => (
       <>
-        <AlertDialog id={params.row.id}/>
+        <AlertDialog id={params.row.id} />
         <CustomizedDialogs id={params.row.id} />
         {/* <Button
           variant="contained"
@@ -167,7 +186,6 @@ export default function DataTable() {
 
   return (
     <Paper sx={{ height: 400, width: "100%" }}>
-  
       <DataGrid
         // onCellClick={(row) => console.log(row.id)}
         rows={rows}
@@ -175,7 +193,16 @@ export default function DataTable() {
         initialState={{ pagination: { paginationModel } }}
         pageSizeOptions={[5, 10]}
         checkboxSelection
-        sx={{ border: 0 }}
+        sx={{
+          border: 0,
+          "& .MuiDataGrid-columnHeaders": {
+            backgroundColor: "#e0f2fe",
+            color: "#1976d2",
+            fontWeight: "bold",
+          },
+        }}
+        // sx={{ border: 0 }
+        //  { "& .MuiDataGrid-columnHeaders": { backgroundColor: "#f5f5f5" } }}
       />
     </Paper>
   );
