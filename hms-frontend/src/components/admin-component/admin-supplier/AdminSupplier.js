@@ -5,9 +5,11 @@ import SupplierTable from "./SupplierTable.js";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import "../../doctor-component/patient-list/PatientList.css";
 import MedicationBetweenDatesTable from "./MedicationUsedBetweenDatesTable.js";
+import SupplierWhoseItemStayedLongest from "./SupplierWhoseItemStayedLongest.js";
 function AdminSupplier() {
   const [suppliers, setSuppliers] = useState([]);
   const allSuppliers = new Set();
+
 
   const [rows, setRows] = useState([]);
   const [gender, setGender] = useState("all");
@@ -46,6 +48,7 @@ function AdminSupplier() {
   };
   return (
     <div className="admin-supplier-container">
+      <SupplierWhoseItemStayedLongest />
       <div className="admin-supplier-main-dashboard-header">
         <div className="header-line">
           <LocalShippingIcon className="admin-supplier-main-dashboard-icon" />
@@ -86,7 +89,9 @@ function AdminSupplier() {
       <div className="admin-supplier-main-dashboard-header medication-table">
         <div className="header-line">
           <LocalShippingIcon className="admin-supplier-main-dashboard-icon" />
-          <h1>Manage Drug Used Between two given Dates</h1>
+          <h1>
+            Manage Drug Used Between two given Dates and a Specific Supplier
+          </h1>
         </div>
 
         <div className="appointments-filters">
@@ -123,12 +128,19 @@ function AdminSupplier() {
             value={endDate}
           />
         </div>
+        <div className="supplier-date-info">
+          <h2>
+            Supplied By: <span>{supplierName}</span>
+          </h2>
+          <h2>
+            From: <span>{startDate}</span> To: <span>{endDate}</span>
+          </h2>
+        </div>
       </div>
       <MedicationBetweenDatesTable
         supplierName={supplierName}
         startDate={startDate}
         endDate={endDate}
-
       />
       <p className="admin-supplier-main-dashboard-paragraph">
         This Table shows medications supplied by a specific supplier that were
