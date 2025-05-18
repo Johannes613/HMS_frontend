@@ -1,0 +1,88 @@
+.billing-interface {
+  width: 100%;
+  border-radius: 10px;
+  padding: 30px 20px;
+  padding-bottom: 40px;
+  margin: 30px auto;
+  margin-top: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e293b;
+  text-align: start;
+    background-color: #f4f4f4;
+
+
+}
+
+.billing-interface h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.billing-cards-wrapper {
+  display: flex;
+  gap: 16px;
+  justify-content: space-around;
+  flex-wrap: wrap; 
+}
+
+.billing-card {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  width: 22vw;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.billing-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #1d4ed8;
+}
+
+.billing-card label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #475569;
+}
+
+.billing-card input,
+.billing-card select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 14px;
+}
+
+.billing-card .result {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1e293b;
+}
+
+.billing-card button {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.billing-card button:hover {
+  background-color: #1d4ed8;
+}

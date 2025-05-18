@@ -53,6 +53,7 @@ function SideNavList() {
         { segment: "my-dashboard", title: "Dashboard" },
         { segment: "patient", title: "My Appointments" },
         { segment: "medical-record", title: "Medical Records" },
+        { segment: "billing-interface", title: "Billing" },
       ];
       break;
     default:

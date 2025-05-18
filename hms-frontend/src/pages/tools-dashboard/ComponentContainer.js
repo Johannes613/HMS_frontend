@@ -14,6 +14,7 @@ import MainDashboard from "../../components/admin-component/main-dashboard/MainD
 import ApptList from "../../components/admin-component/appointment-list/ApptList";
 
 import AdminInventory from "../../components/admin-component/admin-inventory/AdminInventory";
+import BillingInterface from "../../components/patient-component/patient-main/BillingInterface";
 
 const adminComponentList = {
   "/admin": <MainDashboard />,
@@ -33,6 +34,7 @@ const patientComponentList = {
   "/my-dashboard": <MyDashboard />,
   "/patient": <PatientMain />,
   "/medical-record": <MedicalRecord />,
+  "/billing-interface": <BillingInterface/>,
 };
 function Componentcontainer({ pathname }) {
   const { user } = useUserContext();
