@@ -36,3 +36,18 @@
   font-weight: 400;
   line-height: 1.5;
 }
+.admin-supplier-main-dashboard-header.medication-table {
+  margin-top: 100px;
+}
+.admin-supplier-main-dashboard-paragraph {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
