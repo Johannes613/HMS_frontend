@@ -14,6 +14,7 @@
 .header-line {
   display: flex;
   align-items: center;
+
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -22,6 +23,19 @@
   font-weight: bold;
   color: #333;
   margin: 0;
+}
+.header-line h1 span {
+  /* font-size: 1.2rem; */
+  font-weight: bold;
+  color: green;
+  margin: 0;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  /* display: flex;
+  align-items: center; */
 }
 .admin-supplier-main-dashboard-icon {
   font-size: 2rem;
@@ -35,4 +49,133 @@
   margin-bottom: 0;
   font-weight: 400;
   line-height: 1.5;
+}
+.admin-supplier-main-dashboard-header.medication-table {
+  margin-top: 100px;
+}
+.admin-supplier-main-dashboard-paragraph {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.supplier-date-info {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+}
+.supplier-date-info h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+.supplier-date-info h2 span {
+  font-weight: bold;
+  color: green;
+  margin: 0;
+}
+
+/* supplier whose item stayed longer in inventory */
+.longest-stayed-supplier-container {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+.longest-stayed-supplier-container h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
+}
+.longest-stayed-supplier-container .longest-stayed-supplier-table {
+  /* margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  overflow-x: auto; */
+}
+.longest-stayed-supplier-table table thead {
+  background-color: #f0f0f0;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 2px solid #e0e0e0;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+.longest-stayed-supplier-table table thead th {
+  padding: 10px;
+  border-bottom: 2px solid #e0e0e0;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  background-color: #f0f0f0;
+  color: #333;
+}
+.longest-stayed-supplier-table table tbody tr {
+  background-color: #fff;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  transition: background-color 0.3s;
+}
+.longest-stayed-supplier-table table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+.longest-stayed-supplier-table table tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+/* filters */
+.longest-stayed-supplier-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  flex-wrap: wrap;
 }
