@@ -5,6 +5,12 @@ import "../../patient-component/patient-main/DataTable.css";
 
 const columns = [
   {
+    field: "id",
+    headerName: "ID",
+    width: 60,
+    headerClassName: "super-app-theme--header",
+  },
+  {
     field: "supplierName",
     headerName: "Supplier Name",
     width: 160,
@@ -43,10 +49,11 @@ const columns = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
-export default function InventoryTable() {
+export default function InventoryTable({ searchItem }) {
   const [inventory, setInventory] = React.useState([]);
   const [selectedRowIds, setSelectedRowIds] = React.useState([]);
   const [inventId, setInventId] = React.useState(null);
+  const [searchResults, setSearchResults] = React.useState([]);
 
   const handleRowSelection = (ids) => {
     setSelectedRowIds(ids);
@@ -96,12 +103,24 @@ export default function InventoryTable() {
   };
   React.useEffect(() => {
     fetchInventoryData();
-  }, []);
+    console.log(searchItem);
+    setSearchResults(inventory.filter((item) => item.id == searchItem));
+    console.log(searchResults);
+  }, [searchItem]);
+
+  // handle search
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value.toLowerCase();
+    const filteredData = inventory.filter((item) =>
+      item.supplierName.toLowerCase().includes(searchTerm)
+    );
+    setInventory(filteredData);
+  };
 
   return (
     <Paper sx={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={inventory}
+        rows={searchResults.length > 0 || searchItem.length > 0? searchResults : inventory}
         onCellClick={(row) => setInventId(row.id)}
         columns={columns}
         initialState={{ pagination: { paginationModel } }}
