@@ -5,7 +5,7 @@ import { useEffect } from "react";
 const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState("admin");
+  const [user, setUser] = useState("patient");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     if (user) {
