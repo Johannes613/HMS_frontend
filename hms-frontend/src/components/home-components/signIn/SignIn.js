@@ -1,13 +1,12 @@
 import "./SignIn.css";
-// import React, { useContext, useRef, useState } from "react";
-// import { Button, Modal, Form } from "react-bootstrap";
-// import { toast, ToastContainer } from "react-toastify";
-
+import React, { useContext, useRef, useState } from "react";
+import { Button, Modal, Form } from "react-bootstrap";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function SignIn() {
-  // const [accState, setAccState] = useState("Sign-in");
+  const [accState, setAccState] = useState("Sign-in");
   // const [loading, setLoading] = useState(false);
-  // const formRef = useRef(null);
+  const formRef = useRef(null);
   // const [show, setShow] = useState(false);
   // const { currentUser } = useContext(GlobalContext);
 
@@ -71,126 +70,127 @@ export default function SignIn() {
   // };
 
   return (
-    <div></div>
-    // <div className="row">
-    //   <ToastContainer
-    //     position="top-right"
-    //     autoClose={1000}
-    //     hideProgressBar={false}
-    //     newestOnTop={true}
-    //     closeButton
-    //   />
+    <div className="row">
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeButton
+      />
 
-    //   <Button
-    //     variant="primary"
-    //     onClick={currentUser ? handleLogOut : handleShow}
-    //     className="fw-bold"
-    //   >
-    //     {currentUser
-    //       ? "SignOut"
-    //       : accState === "Sign-in"
-    //       ? "Sign In"
-    //       : "Sign Up"}
-    //   </Button>
+      <Button
+        variant="primary"
+        // onClick={currentUser ? handleLogOut : handleShow}
+        className="fw-bold"
+      >
+        {/* {currentUser
+          ? "SignOut"
+          : accState === "Sign-in"
+            ? "Sign In"
+            : "Sign Up"} */}
+            sign in
+      </Button>
 
-    //   <Modal
-    //     show={show}
-    //     onHide={handleClose}
-    //     centered
-    //     className="custom-modal"
-    //     size="md"
-    //     aria-labelledby="contained-modal-title-vcenter"
-    //   >
-    //     <Modal.Header closeButton>
-    //       <Modal.Title id="contained-modal-title-vcenter" className="fw-bold">
-    //         {accState} to Medicate Hospital
-    //       </Modal.Title>
-    //     </Modal.Header>
+      <Modal
+        // show={show}
+        // onHide={handleClose}
+        centered
+        className="custom-modal"
+        size="md"
+        aria-labelledby="contained-modal-title-vcenter"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter" className="fw-bold">
+             to Medicate Hospital
+          </Modal.Title>
+        </Modal.Header>
 
-    //     <Modal.Body>
-    //       <Form ref={formRef}>
-    //         {accState === "Sign-up" && (
-    //           <Form.Group className="mb-3">
-    //             <Form.Label className="fw-semibold">Username</Form.Label>
-    //             <Form.Control
-    //               type="text"
-    //               placeholder="Enter username"
-    //               name="username"
-    //               required
-    //             />
-    //           </Form.Group>
-    //         )}
+        <Modal.Body>
+          <Form ref={formRef}>
+            {"Sign-up"=== "Sign-up" && (
+              <Form.Group className="mb-3">
+                <Form.Label className="fw-semibold">Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter username"
+                  name="username"
+                  required
+                />
+              </Form.Group>
+            )}
 
-    //         <Form.Group className="mb-3">
-    //           <Form.Label className="fw-semibold">Email</Form.Label>
-    //           <Form.Control
-    //             type="email"
-    //             placeholder="Enter email"
-    //             name="email"
-    //             required
-    //           />
-    //         </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-semibold">Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                required
+              />
+            </Form.Group>
 
-    //         <Form.Group className="mb-3">
-    //           <Form.Label className="fw-semibold">Password</Form.Label>
-    //           <Form.Control
-    //             type="password"
-    //             placeholder="Enter password"
-    //             name="password"
-    //             required
-    //           />
-    //         </Form.Group>
-    //       </Form>
-    //     </Modal.Body>
+            <Form.Group className="mb-3">
+              <Form.Label className="fw-semibold">Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                name="password"
+                required
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
 
-    //     <Modal.Footer className="border-0 d-flex justify-content-center">
-    //       <Button
-    //         variant="secondary"
-    //         onClick={handleClose}
-    //         className="fw-bold me-2"
-    //       >
-    //         Close
-    //       </Button>
-    //       <Button
-    //         variant="primary"
-    //         onClick={accState === "Sign-up" ? handleSignUp : handleLogIn}
-    //         disabled={loading}
-    //         className="fw-bold"
-    //       >
-    //         {loading
-    //           ? "Loading . . ."
-    //           : accState === "Sign-up"
-    //           ? "Create Account"
-    //           : "Sign in"}
-    //       </Button>
-    //     </Modal.Footer>
+        <Modal.Footer className="border-0 d-flex justify-content-center">
+          <Button
+            variant="secondary"
+            // onClick={handleClose}
+            className="fw-bold me-2"
+          >
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            // onClick={accState === "Sign-up" ? handleSignUp : handleLogIn}
+            // disabled={loading}
+            className="fw-bold"
+          >
+            {/* {loading
+              ? "Loading . . ."
+              : accState === "Sign-up"
+                ? "Create Account"
+                : "Sign in"} */}
+                sign in
+          </Button>
+        </Modal.Footer>
 
-    //     <div className="text-center p-3 fw-semibold">
-    //       {accState === "Sign-up" ? (
-    //         <p>
-    //           Already have an account?{" "}
-    //           <span
-    //             className="text-primary"
-    //             onClick={() => setAccState("Sign-in")}
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             Sign In
-    //           </span>
-    //         </p>
-    //       ) : (
-    //         <p>
-    //           Don't have an account?{" "}
-    //           <span
-    //             className="text-primary"
-    //             onClick={() => setAccState("Sign-up")}
-    //             style={{ cursor: "pointer" }}
-    //           >
-    //             Sign Up
-    //           </span>
-    //         </p>
-    //       )}
-    //     </div>
-    //   </Modal>
-    // </div>
+        <div className="text-center p-3 fw-semibold">
+          {accState === "Sign-up" ? (
+            <p>
+              Already have an account?{" "}
+              <span
+                className="text-primary"
+                // onClick={() => setAccState("Sign-in")}
+                style={{ cursor: "pointer" }}
+              >
+                Sign In
+              </span>
+            </p>
+          ) : (
+            <p>
+              Don't have an account?{" "}
+              <span
+                className="text-primary"
+                // onClick={() => setAccState("Sign-up")}
+                style={{ cursor: "pointer" }}
+              >
+                Sign Up
+              </span>
+            </p>
+          )}
+        </div>
+      </Modal>
+    </div>
   );
 }

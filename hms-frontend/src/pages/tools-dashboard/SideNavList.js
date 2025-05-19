@@ -50,9 +50,17 @@ function SideNavList() {
     case "patient":
       // Handle unknown roles or redirect to a default component
       sideNav = [
-        { segment: "my-dashboard", title: "Dashboard" },
-        { segment: "patient", title: "My Appointments" },
-        { segment: "medical-record", title: "Medical Records" },
+        {
+          segment: "my-dashboard",
+          title: "Dashboard",
+          icon: <AdminPanelSettingsIcon />,
+        },
+        { segment: "patient", title: "My Appointments", icon: <EventIcon /> },
+        {
+          segment: "medical-record",
+          title: "Medical Records",
+          icon: <EventIcon />,
+        },
       ];
       break;
     default:
