@@ -5,10 +5,6 @@ import { useEffect } from "react";
 const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
-<<<<<<< HEAD
-
-=======
->>>>>>> myBranch
   const [user, setUser] = useState("patient"); // default user is admin
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
