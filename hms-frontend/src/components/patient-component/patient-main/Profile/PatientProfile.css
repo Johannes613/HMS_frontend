@@ -1,0 +1,178 @@
+.patient-profile {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* padding: 20px; */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  overflow: hidden;
+}
+.patient-profile .patient-profile-img-container {
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  margin-bottom: 20px;
+  /* background: rgba(0, 0, 0, 0.1), url("../../../../assets/profile_bg.webp"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  padding-left: 150px;
+}
+.patient-profile-img-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1) url("../../../../assets/profile_bg.webp");
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  z-index: 0;
+}
+.patient-profile .patient-profile-img-container h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+  padding: 20px;
+  z-index: 1;
+}
+
+.patient-profile .patient-profile-img-container img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  left: 20px;
+  bottom: -20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #fff;
+}
+.patient-profile .tabs {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+  gap: 20px;
+  padding: 0 20px;
+}
+.patient-profile .tabs .tab {
+  background-color: #fff;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.patient-profile .tabs .tab:hover {
+  background-color: #f0f0f0;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  transition: all 0.3s ease;
+}
+
+.patient-profile .tabs .tab.active {
+  background-color: #f0f0f0;
+  color: yellowgreen;
+  border-bottom: 2px solid #007bff;
+  transition: all 0.3s ease;
+}
+.patient-profile .tabs h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  padding: 10px 20px;
+}
+
+/* style for my profile page */
+.my_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+.my_profile h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 0 20px;
+}
+.my_profile .personal-info-details {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 20px;
+}
+.my_profile .personal-info-details p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+  margin: 0;
+  padding: 10px 0;
+  text-align: left;
+}
+.my_profile .personal-info-details p span {
+  font-weight: 600;
+  color: #007bff;
+  margin-left: 20px;
+}
+.update-prof-btn .update-profile-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+.update-prof-btn .update-profile-button:hover {
+  background-color: #0056b3;
+}
+.update-prof-btn .update-profile-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+}
+.profile-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+}
+.profile-header .profile-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 2px solid #fff;
+  background-color: #f0f0f0;
+  display: flex;
+}
