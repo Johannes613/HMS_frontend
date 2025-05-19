@@ -1,196 +1,150 @@
+import { use, useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import "./SignIn.css";
-import React, { useContext, useRef, useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
-import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useUserContext } from "../../../context/userContext";
 
-export default function SignIn() {
-  const [accState, setAccState] = useState("Sign-in");
-  // const [loading, setLoading] = useState(false);
-  const formRef = useRef(null);
-  // const [show, setShow] = useState(false);
-  // const { currentUser } = useContext(GlobalContext);
+function SignIn() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const { userRole, setUserRole } = useUserContext();
+  const { user, setUser } = useUserContext();
+  const { isLoggedIn, setIsLoggedIn } = useUserContext();
+  const handleShow = () => setShow(true);
+  const [loggedInUser, setLoggedInUser] = useState({
+    email: "",
+    password: "",
+    userType: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLoggedInUser({ ...loggedInUser, [name]: value });
+  };
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    // Perform sign-in logic here
+    console.log("User Info:", loggedInUser);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/four-six/login",
+        loggedInUser
+      );
+      setLoading(false);
+      if (response.status === 200) {
+        console.log("User logged in successfully:", response.data);
+        setUser(response.data);
+        setUserRole(loggedInUser.userType);
+        setIsLoggedIn(true);
 
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
-
-  // const handleSignUp = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   const formDatas = new FormData(formRef.current);
-  //   const { email, password } = Object.fromEntries(formDatas.entries());
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(
-  //       auth,
-  //       email,
-  //       password
-  //     );
-  //     const user = userCredential.user;
-  //     await setDoc(doc(db, "userCart", user.uid), {
-  //       cart: [],
-  //     });
-  //     setShow(false);
-  //     toast.success("Account created successfully");
-  //   } catch (error) {
-  //     const errorMessage = error.message;
-  //     toast.error(errorMessage);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // const handleLogOut = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     toast.success("User logged Out!");
-  //   } catch (error) {
-  //     toast.error(error.message);
-  //   }
-  // };
-
-  // const handleLogIn = async (e) => {
-  //   setLoading(true);
-  //   e.preventDefault();
-  //   const formDatas = new FormData(formRef.current);
-  //   const { email, password } = Object.fromEntries(formDatas.entries());
-  //   try {
-  //     const userCredential = await signInWithEmailAndPassword(
-  //       auth,
-  //       email,
-  //       password
-  //     );
-  //     const user = userCredential.user;
-  //     toast.success("User Logged in!");
-  //     setShow(false);
-  //   } catch (error) {
-  //     const errorMessage = error.message;
-  //     toast.error(errorMessage);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+        // Redirect to dashboard or show success message
+        // navigate("/dashboard");
+      } else {
+        console.error("Error logging in user:", response.data);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
 
   return (
-    <div className="row">
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={true}
-        closeButton
-      />
-
-      <Button
-        variant="primary"
-        // onClick={currentUser ? handleLogOut : handleShow}
-        className="fw-bold"
-      >
-        {/* {currentUser
-          ? "SignOut"
-          : accState === "Sign-in"
-            ? "Sign In"
-            : "Sign Up"} */}
-            sign in
+    <div className="d-flex align-items-center justify-content-center gap-5">
+      <Button variant="primary" onClick={handleShow}>
+        Sign In
       </Button>
 
       <Modal
-        // show={show}
-        // onHide={handleClose}
-        centered
-        className="custom-modal"
-        size="md"
-        aria-labelledby="contained-modal-title-vcenter"
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter" className="fw-bold">
-             to Medicate Hospital
-          </Modal.Title>
+          <Modal.Title>Sign in</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
-          <Form ref={formRef}>
-            {"Sign-up"=== "Sign-up" && (
-              <Form.Group className="mb-3">
-                <Form.Label className="fw-semibold">Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter username"
-                  name="username"
-                  required
-                />
-              </Form.Group>
-            )}
-
-            <Form.Group className="mb-3">
-              <Form.Label className="fw-semibold">Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
+          <div className="form">
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email address
+              </label>
+              <input
                 name="email"
-                required
+                onChange={handleInputChange}
+                type="email"
+                className="form-control"
+                id="email"
+                placeholder="Enter your email"
               />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label className="fw-semibold">Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter password"
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
                 name="password"
-                required
+                onChange={handleInputChange}
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="Enter your password"
               />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-
-        <Modal.Footer className="border-0 d-flex justify-content-center">
-          <Button
-            variant="secondary"
-            // onClick={handleClose}
-            className="fw-bold me-2"
-          >
-            Close
-          </Button>
-          <Button
-            variant="primary"
-            // onClick={accState === "Sign-up" ? handleSignUp : handleLogIn}
-            // disabled={loading}
-            className="fw-bold"
-          >
-            {/* {loading
-              ? "Loading . . ."
-              : accState === "Sign-up"
-                ? "Create Account"
-                : "Sign in"} */}
-                sign in
-          </Button>
-        </Modal.Footer>
-
-        <div className="text-center p-3 fw-semibold">
-          {accState === "Sign-up" ? (
-            <p>
-              Already have an account?{" "}
-              <span
-                className="text-primary"
-                // onClick={() => setAccState("Sign-in")}
-                style={{ cursor: "pointer" }}
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Login as
+              </label>
+              <select
+                name="userType"
+                id="login-as"
+                className="form-select"
+                onChange={handleInputChange}
               >
-                Sign In
-              </span>
-            </p>
-          ) : (
+                <option value="admin">Admin</option>
+                <option value="doctor">Doctor</option>
+                <option value="patient">Patient</option>
+              </select>
+            </div>
+          </div>
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="rememberMe"
+            />
+            <label className="form-check-label" htmlFor="rememberMe">
+              Remember me
+            </label>
+          </div>
+          <div className="mb-3">
+            <a href="#" className="forgot-password-link">
+              Forgot password?
+            </a>
+          </div>
+          <div className="mb-3">
             <p>
               Don't have an account?{" "}
-              <span
-                className="text-primary"
-                // onClick={() => setAccState("Sign-up")}
-                style={{ cursor: "pointer" }}
-              >
-                Sign Up
-              </span>
+              <Link to="/sign-up" className="sign-up-link">
+                Sign up
+              </Link>
             </p>
-          )}
-        </div>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            {loading ? "Signing in..." : "Sign In"}
+          </Button>
+        </Modal.Footer>
       </Modal>
     </div>
   );
 }
+
+export default SignIn;
