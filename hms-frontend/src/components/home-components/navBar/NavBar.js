@@ -11,9 +11,11 @@ import IconButton from "@mui/material/IconButton";
 import Badge, { badgeClasses } from "@mui/material/Badge";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Button } from "react-bootstrap";
+import { useUserContext } from "../../../context/userContext";
 
 export default function NavBar() {
-  const { currentUser, numOfItems} = useState("");
+  const { currentUser, numOfItems } = useState("");
+  const { isLoggedIn } = useUserContext();
   const CartBadge = styled(Badge)`
     & .${badgeClasses.badge} {
       top: -12px;
@@ -65,10 +67,15 @@ export default function NavBar() {
               ) : (
                 <></>
               )}
-              <Link to="/dashboard" className="nav-link">
-                <Button variant = "primary" className="to-dashboard">Dashboard</Button>
-              </Link>
-              <SignIn />
+              {isLoggedIn ? (
+                <Link to="/dashboard" className="nav-link">
+                  <Button variant="primary" className="to-dashboard">
+                    Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <SignIn />
+              )}
             </div>
           </Navbar.Collapse>
         </Container>

@@ -1,4 +1,43 @@
 .custom-modal .modal-dialog {
-    max-width: 450px !important;
-    padding: 20px;
-  }
+  max-width: 450px !important;
+  padding: 20px;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+}
+.modal-header {
+  border: none;
+  padding: 0;
+}
+.modal-body {
+}
+.modal-body form {
+  padding: 20px;
+  background: #fff;
+}
+.modal-body form .form-group {
+  margin-bottom: 15px;
+}
+.modal-body form .form-group label {
+  font-weight: bold;
+  color: #333;
+}
+.modal-body form .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.modal-body form .form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.modal-body form .form-check {
+  margin-bottom: 15px;
+}
