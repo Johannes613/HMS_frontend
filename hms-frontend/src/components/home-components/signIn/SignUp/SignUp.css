@@ -1,0 +1,82 @@
+.sign-up-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+.sign-up-page .container {
+  max-width: 700px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+.sign-up-page .container p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+.sign-up-page .container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #fff;
+}
+.sign-up-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sign-up-page .form-group {
+  margin-bottom: 15px;
+}
+.sign-up-page .form-group label {
+  font-weight: bold;
+}
+.sign-up-page .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.sign-up-page .form-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.sign-up-page .form-check {
+  margin-bottom: 15px;
+}
+.sign-up-page .form-check input {
+  margin-right: 10px;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-weight: bold;
+}
+.radio-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sign-up-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  width: 100%;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}

@@ -14,10 +14,10 @@ export default function PatientMain() {
         history, schedule appointments, and manage your health records.
       </p>
       <DataTable />
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <button className="action-button">Request reschedule</button>
         <button className="action-button">Cancel Appointment</button>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -136,7 +136,7 @@ export default function InventoryTable({ searchItem }) {
           width: "100%",
         }}
       />
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <button className=" btn btn-primary action-btn" onClick={handleAdd}>
           Add Patient
         </button>
@@ -154,7 +154,7 @@ export default function InventoryTable({ searchItem }) {
         >
           Delete
         </button>
-      </div>
+      </div> */}
     </Paper>
   );
 }

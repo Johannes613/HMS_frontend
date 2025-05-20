@@ -91,25 +91,7 @@ export default function SupplierTable({ rows }) {
           width: "100%",
         }}
       />
-      <div className="action-buttons">
-        <button className=" btn btn-primary action-btn" onClick={handleAdd}>
-          Add Supplier
-        </button>
-        <button
-          className=" btn btn-primary action-btn"
-          onClick={handleUpdate}
-          disabled={!patientId}
-        >
-          Update
-        </button>
-        <button
-          className=" btn btn-danger action-btn"
-          disabled={!patientId}
-          onClick={handleDelete}
-        >
-          Delete
-        </button>
-      </div>
+     
     </Paper>
   );
 }

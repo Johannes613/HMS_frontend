@@ -106,7 +106,7 @@ export default function PatientDataTable({ rows }) {
           width: "100%",
         }}
       />
-      <div className="action-buttons">
+      {/* <div className="action-buttons">
         <button className=" btn btn-primary action-btn" onClick={handleAdd}>
           Add Patient
         </button>
@@ -124,7 +124,7 @@ export default function PatientDataTable({ rows }) {
         >
           Delete
         </button>
-      </div>
+      </div> */}
     </Paper>
   );
 }

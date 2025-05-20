@@ -6,8 +6,9 @@ const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
 
-  const [user, setUser] = useState("admin"); // default user is admin
+  const [user, setUser] = useState("doctor"); // default user is admin
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole,setUserRole] = useState("");
   useEffect(() => {
     if (user) {
       setIsLoggedIn(true);
@@ -17,7 +18,9 @@ export const UserProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }}>
+    <UserContext.Provider
+      value={{ user, setUser, isLoggedIn, setIsLoggedIn, userRole, setUserRole }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -62,9 +62,9 @@ export default function MedicalRecordTable() {
       const formattedData = data.map((record, index) => ({
         id: index + 1,
         date: record.date.split("T")[0],
-        firstName: record.patient_name,
-        lastName: record.patient_name,
-        doctor: record.doc_name,
+        firstName: record.patient_fname,
+        lastName: record.patient_fname,
+        doctor: record.doc_fname,
         treatment: record.description,
         diagnosis: record.diagnosis,
       }));
