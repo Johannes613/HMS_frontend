@@ -50,12 +50,6 @@ function SideNavList() {
     case "patient":
       // Handle unknown roles or redirect to a default component
       sideNav = [
-<<<<<<< HEAD
-        { segment: "my-dashboard", title: "Dashboard" },
-        { segment: "patient", title: "My Appointments" },
-        { segment: "medical-record", title: "Medical Records" },
-        { segment: "billing-interface", title: "Billing" },
-=======
         {
           segment: "my-dashboard",
           title: "Dashboard",
@@ -67,7 +61,6 @@ function SideNavList() {
           title: "Medical Records",
           icon: <EventIcon />,
         },
->>>>>>> myBranch
       ];
       break;
     default:
