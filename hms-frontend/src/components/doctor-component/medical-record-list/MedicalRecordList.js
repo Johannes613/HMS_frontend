@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../patient-list/PatientList.css";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 
 const MedicalRecordList = () => {
   const [records, setRecords] = useState([]);
@@ -19,7 +21,7 @@ const MedicalRecordList = () => {
             body: JSON.stringify({
               rec_id: sortByRecId,
               patient_id: sortByPatientId,
-              patient_name: sortByPatientName,
+              patient_fname: sortByPatientName,
               
             }),
           }
@@ -38,7 +40,7 @@ const MedicalRecordList = () => {
   }, [sortByRecId, sortByPatientName, sortByPatientId]);    
   return (
     <div className="appointments-container">
-      <h1 className="appointments-title">All Medical Records</h1>
+      <h1 className="appointments-title"><CalendarMonthIcon className="icons-appts"/>All Medical Records</h1>
       <div className="appointments-filters">
         <label htmlFor="" className="label-date">
           Sort by patient name
@@ -49,8 +51,8 @@ const MedicalRecordList = () => {
           value={sortByPatientName}
         >
           <option value="">Default</option>
-          <option value="patient_name asc">ASC</option>
-          <option value="patient_name desc">DESC</option>
+          <option value="patient_fname asc">ASC</option>
+          <option value="patient_fname desc">DESC</option>
         </select>
         <label htmlFor="" className="label-date">
           Sort by patient id
@@ -73,8 +75,8 @@ const MedicalRecordList = () => {
           value={sortByRecId}
         >
           <option value="">Default</option>
-          <option value="record_id asc">ASC</option>
-          <option value="record_id desc">DESC</option>
+          <option value="rec_id asc">ASC</option>
+          <option value="rec_id desc">DESC</option>
         </select>
         
       </div>
@@ -92,10 +94,10 @@ const MedicalRecordList = () => {
           </thead>
           <tbody>
             {records.map((record) => (
-              <tr key={record.id}>
+              <tr >
                 <td>{record.record_id}</td>
                 <td>{record.patient_id}</td>
-                <td>{record.patient_name}</td>
+                <td>{record.patient_fname}</td>
                 <td>{record.treatment_code}</td>
                 <td>{record.diagnosis}</td>
               </tr>

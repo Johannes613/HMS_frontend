@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PatientList.css";
+import GroupIcon from "@mui/icons-material/Group";
+
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
@@ -35,7 +37,7 @@ const PatientList = () => {
   }, [ageGroup, gender]);
   return (
     <div className="appointments-container">
-      <h1 className="appointments-title">All Patients</h1>
+      <h1 className="appointments-title"><GroupIcon className="icons-appts" /> All Patients</h1>
       <div className="appointments-filters">
         <label htmlFor="" className="label-date">
           Select gendar
@@ -81,10 +83,10 @@ const PatientList = () => {
             {patients.map((patient) => (
               <tr key={patient.id}>
                 <td>{patient.patient_id}</td>
-                <td>{patient.patient_name}</td>
+                <td>{patient.patient_fname}</td>
                 <td>{patient.gender}</td>
                 <td>{patient.age}</td>
-                <td>{patient.birth_date}</td>
+                <td>{patient.birth_date?.substring(0,10)}</td>
               </tr>
             ))}
           </tbody>

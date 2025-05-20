@@ -39,10 +39,10 @@ function SideNavList() {
     case "doctor":
       // Render user components
       sideNav = [
-        { segment: "doctor", title: "Main Dashboard" },
-        { segment: "doctorAppointment", title: "Appointments" },
-        { segment: "patientList", title: "Patients" },
-        { segment: "medicaRecordList", title: "Medical Records" },
+        { segment: "doctor", title: "Main Dashboard", icon:<AdminPanelSettingsIcon /> },
+        { segment: "doctorAppointment", title: "Appointments",icon: <EventIcon />},
+        { segment: "patientList", title: "Patients",icon:<LocalHospitalIcon /> },
+        { segment: "medicaRecordList", title: "Medical Records",icon: <InventoryIcon />  },
         // { segment: "patient", title: "Patient" },
         // { segment: "Imagegenerator", title: "Image Generator" },
       ];

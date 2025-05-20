@@ -1,6 +1,8 @@
 import React, { use, useEffect, useState } from "react";
 import "./DoctorMain.css"; 
 import doc_prof from "../../../images/doc_prof.png";
+import DashboardIcon from '@mui/icons-material/Dashboard';
+
 
 export default function DoctorMain() {
   const [data, setData] = useState([]);
@@ -8,6 +10,23 @@ export default function DoctorMain() {
   const [completedAppts, setCompletedAppts] = useState(0);
   const [canceledAppts, setCanceled] = useState([]);
   const [lastWeekAppts, setLastWeeksAppts] = useState(0);
+
+  const viewPassedAppointment =  async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/appointmentpassed');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const result = await response.json();
+        setData(result);
+        
+       
+        
+      } catch (error) {
+        console.error('Error fetching passed trend:', error);
+      } 
+    };
   
   useEffect(() => {
     const fetchAppointments= async () => {
@@ -34,6 +53,9 @@ export default function DoctorMain() {
         console.error('Error fetching patient visit trend:', error);
       } 
     };
+    
+    
+
     const fetchTotalPatients= async () => {
       try{
         const response = await fetch('http://localhost:5000/appointmentStat/totalPatients');
@@ -80,8 +102,6 @@ export default function DoctorMain() {
     const fetchLastWeekList= async () => {
       try{
         const response = await fetch('http://localhost:5000/appointmentStat/lastWeekAppts');
-
-        
         if (!response.ok) {
           throw new Error('Failed to fetch data');
         }
@@ -105,7 +125,7 @@ export default function DoctorMain() {
      <div className="dashboard-container">
       <div className="dashboard-content">
         <div className="dashboard-header">
-          <h1>Doctor Dashboard</h1>
+          <h1><DashboardIcon className="icons-appts"/> Doctor Dashboard</h1>
           <div className="dashboard-profile">
            
             <img
@@ -130,7 +150,7 @@ export default function DoctorMain() {
               <tbody>
                  {data.map((appointment) => (
                   <tr key={appointment.id}>
-                    <td>{appointment.patient_name}</td>
+                    <td>{appointment.patient_fname}</td>
                     <td>{appointment.appt_time}</td>
                     <td>{appointment.appt_status}</td>
                   </tr>
@@ -177,9 +197,9 @@ export default function DoctorMain() {
           </div>
 
           <div className="card quick-actions">
-            <h2>Quick Actions</h2>
-            <button className="action-button">View All Appoitments</button>
-            <button className="action-button">View Schedule</button>
+            <h2>Quick Action</h2>
+            <button className="action-button" onClick={viewPassedAppointment} style={{marginTop:20}}>View Passed Appoitments</button>
+            <button className="action-button" style={{opacity:0}}>View Passed Appoitments</button>
           </div>
         </div>
       </div>

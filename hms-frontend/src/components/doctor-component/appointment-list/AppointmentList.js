@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./AppointmentList.css";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AlertDialog from "../../patient-component/patient-main/DeleteAppointmentModal";
+import CustomizedDialogs from "../../patient-component/patient-main/UpdateAppointmentModal";
+
 
 const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
@@ -35,7 +39,7 @@ const AppointmentList = () => {
   }, [apptDate, apptStatus]);
   return (
     <div className="appointments-container">
-      <h1 className="appointments-title">All Appointments</h1>
+      <h1 className="appointments-title"><CalendarMonthIcon className="icons-appts"/>All Appointments</h1>
       <div className="appointments-filters">
         <label htmlFor="" className="label-date">
           Select start date
@@ -61,16 +65,20 @@ const AppointmentList = () => {
               <th>Date</th>
               <th>Time</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {appointments.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.appt_id}</td>
-                <td>{appointment.patient_name}</td>
+                <td>{appointment.patient_fname}</td>
                 <td>{appointment.appt_date.substring(0,10)}</td>
                 <td>{appointment.appt_time}</td>
                 <td>{appointment.appt_status}</td>
+                <td><AlertDialog id = {appointment.appt_id}/>
+                <CustomizedDialogs id={appointment.appt_id} /></td>
+
               </tr>
             ))}
           </tbody>
