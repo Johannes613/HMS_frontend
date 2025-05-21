@@ -4,8 +4,10 @@ import "./PatientProfile.css";
 import MyProfile from "./MyProfile";
 import MedicalRecord from "../MedicalRecord";
 import PatientMain from "../PatientMain";
+import { useUserContext } from "../../../../context/userContext";
 function PatientProfile() {
   const [activeTab, setActiveTab] = React.useState("profile");
+  const {user}=useUserContext();
   useEffect(() => {
     console.log(activeTab);
   }, [activeTab]);
@@ -14,7 +16,7 @@ function PatientProfile() {
       <div className="patient-profile">
         <div className="patient-profile-img-container">
           <img src={patientImg} alt="patient" className="patient-profile-img" />
-          <h2>Indalu Kelbesa</h2>
+          <h2>{user.patient_fname} {user.patient_lname}</h2>
         </div>
 
         <div className="tabs">

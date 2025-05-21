@@ -6,6 +6,7 @@ import axios from "axios";
 import AlertDialog from "./DeleteAppointmentModal";
 import CustomizedDialogs from "./UpdateAppointmentModal";
 import "./DataTable.css";
+import { useUserContext } from "../../../context/userContext";
 
 const columns = [
   {
@@ -50,14 +51,6 @@ const columns = [
       <>
         <AlertDialog id={params.row.id} />
         <CustomizedDialogs id={params.row.id} />
-        {/* <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          onClick={() => handleReschedule(params.row.id)}
-        >
-          Reschedule
-        </Button> */}
       </>
     ),
   },
@@ -69,14 +62,11 @@ const handleOpen = (id) => {
 const handleReschedule = (id) => {
   console.log("Reschedule appointment for:", id);
 };
-// Here you can implement the logic to cancel the appointment
-
-// Handle the action when the button is clicked
-
 const paginationModel = { page: 0, pageSize: 5 };
 
 export default function DataTable() {
   const [rows, setRows] = useState([]);
+  const { user } = useUserContext();
 
   useEffect(() => {
     fetchData();
@@ -84,7 +74,9 @@ export default function DataTable() {
   // fetch appointment data from the server
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/appointment/1");
+      const response = await axios.get(
+        `http://localhost:5000/appointment/${user.patient_id}`
+      );
       const data = response.data;
       console.log(data);
       const formattedData = data.map((item, index) => ({

@@ -72,7 +72,7 @@ const ApptList = () => {
             {appointments.map((appointment) => (
               <tr key={appointment.appt_id}>
                 <td>{appointment.appt_id}</td>
-                <td>{appointment.patient_name}</td>
+                <td>{appointment.patient_fname}</td>
                 <td>{appointment.appt_date.substring(0,10)}</td>
                 <td>{appointment.appt_time}</td>
                 <td>{appointment.appt_status}</td>

@@ -1,6 +1,9 @@
+import { useUserContext } from "../../../../context/userContext";
 import UpdateProfileModal from "../UpdateProfileModal";
 import PersonIcon from "@mui/icons-material/Person";
 function MyProfile() {
+  const { user } = useUserContext();
+  console.log(user + " from patient profile");
   return (
     <div className="my_profile">
       <div className="profile-header">
@@ -10,25 +13,25 @@ function MyProfile() {
 
       <div className="personal-info-details">
         <p>
-          First Name: <span>Indalu</span>
+          First Name: <span>{user.patient_fname}</span>
         </p>
         <p>
-          Last Name: <span>Kelbesa</span>
+          Last Name: <span>{user.patient_lname}</span>
         </p>
         <p>
-          Gender: <span>Male</span>
+          Gender: <span>{user.gender}</span>
         </p>
         <p>
-          Date of Birth: <span>1990-01-01</span>
+          Date of Birth: <span>{user.birth_date}</span>
         </p>
         <p>
-          Age:<span>21</span>
+          Age:<span>{user.age}</span>
         </p>
         <p>
-          Email: <span>indalu@gmail.com</span>
+          Email: <span>{user.email}</span>
         </p>
         <p>
-          Phone: <span>123-456-7890</span>
+          Phone: <span>{user.phone_num}</span>
         </p>
         <p>
           Address: <span>123 Main St, City, Country</span>

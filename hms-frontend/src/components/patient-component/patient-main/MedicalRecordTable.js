@@ -3,6 +3,7 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./DataTable.css";
+import { useUserContext } from "../../../context/userContext";
 const columns = [
   {
     field: "date",
@@ -50,13 +51,14 @@ const columns = [
 const paginationModel = { page: 0, pageSize: 5 };
 export default function MedicalRecordTable() {
   const [rows, setRows] = useState([]);
+  const {user}=useUserContext();
   // fetch medical records from the backend
   useEffect(() => {
     fetchMedicalRecords();
   }, []);
   const fetchMedicalRecords = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/medicalRecord/1");
+      const response = await axios.get(`http://localhost:5000/medicalRecord/${user.patient_id}`);
       const data = response.data;
       console.log(data);
       const formattedData = data.map((record, index) => ({
