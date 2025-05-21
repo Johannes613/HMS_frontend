@@ -7,9 +7,9 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 
 function SideNavList() {
   let sideNav = null;
-  const { user } = useUserContext();
+  const { userRole } = useUserContext();
 
-  switch (user) {
+  switch (userRole) {
     case "admin":
       // Render admin components
       sideNav = [

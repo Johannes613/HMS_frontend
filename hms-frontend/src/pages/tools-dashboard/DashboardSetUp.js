@@ -12,10 +12,13 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import HomePage from "../home/HomePage";
+import { useUserContext } from "../../context/userContext";
 
 
 function DashboardSetUp() {
   const router = useDemoRouter("/dashboard");
+  const {user}=useUserContext();
+  console.log(user)
   const sideNav = SideNavList();
   return (
     <AppProvider navigation={sideNav} router={router} theme={customTheme} >

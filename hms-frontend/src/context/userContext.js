@@ -1,12 +1,11 @@
 // create user context
 import React, { createContext, useContext, useState } from "react";
 import { useEffect } from "react";
-
 const UserContext = createContext();
 export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
 
-  const [user, setUser] = useState("admin"); // default user is admin
+  const [user, setUser] = useState(""); // default user is admin
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userRole,setUserRole] = useState("");
   useEffect(() => {

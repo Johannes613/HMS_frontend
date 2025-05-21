@@ -2,8 +2,11 @@ import React from "react";
 import "./SignUp.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../../../context/userContext";
 function SignUp() {
   const navigate = useNavigate();
+  const { user, setUser } = useUserContext();
+  const { userRole, setUserRole } = useUserContext();
   const [loading, setLoading] = React.useState(false);
   const [userInfo, setUserInfo] = React.useState({
     firstName: "",
@@ -14,6 +17,7 @@ function SignUp() {
     birthDate: "",
     insuranceProvider: "",
     password: "",
+    age: "",
   });
 
   // handle input change
@@ -36,6 +40,8 @@ function SignUp() {
       setLoading(false);
       if (response.status === 200) {
         console.log("User registered successfully:", response.data);
+        setUser(response.data);
+        setUserRole("patient");
         // Redirect to dashboard or show success message
         navigate("/dashboard");
       } else {
@@ -105,6 +111,21 @@ function SignUp() {
                 />
               </div>
             </div>
+          </div>
+          <div className="mb-3 form-group">
+            <label htmlFor="age" className="form-label">
+              Age
+            </label>
+            <input
+              onChange={handleInputChange}
+              type="number"
+              min={18}
+              className="form-control"
+              id="age"
+              placeholder="Enter your age"
+              name="age"
+              value={userInfo.age}
+            />
           </div>
           <div className="mb-3 form-group">
             <label htmlFor="email" className="form-label">

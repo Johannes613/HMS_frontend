@@ -37,9 +37,10 @@ const patientComponentList = {
   "/billing-interface": <BillingInterface/>,
 };
 function Componentcontainer({ pathname }) {
-  const { user } = useUserContext();
+  const { userRole } = useUserContext();
+  // console.log("userRole from comp container " + userRole)
   let componentList = null;
-  switch (user) {
+  switch (userRole) {
     case "admin":
       // Render admin components
       componentList = adminComponentList;
@@ -60,7 +61,7 @@ function Componentcontainer({ pathname }) {
 
   // Default to MainDashboard if path is empty or unrecognized
   const componentToRender =
-    componentList[pathname] || componentList[`/${user}`];
+    componentList[pathname] || componentList[`/${userRole}`];
   // const componentToRender = componentList[pathname] || <MainDashboard />;
 
   return (
