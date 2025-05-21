@@ -51,7 +51,7 @@ const ApptList = () => {
         <select className="filter-select" onChange={(e)=>setApptStatus(e.target.value)} value={apptStatus}>
           <option value = "all">All</option>
           <option value = "Completed">Completed</option>
-          <option value = "Canceled">Canceled</option>
+          <option value = "Cancelled">Canceled</option>
           <option value = "Scheduled">Scheduled</option>
         </select>
       </div>
