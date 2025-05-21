@@ -82,9 +82,9 @@ export default function DataTable() {
       const formattedData = data.map((item, index) => ({
         id: item.appt_id,
         date: item.appt_date.split("T")[0], // Extract date from the string
-        firstName: item.patient_name,
-        lastName: item.patient_name,
-        doctor: item.doc_name,
+        firstName: item.patient_fname,
+        lastName: item.patient_fname,
+        doctor: item.doc_fname,
         status: item.status,
         // cancel: "Cancel Appointment", // Placeholder for action button
       }));

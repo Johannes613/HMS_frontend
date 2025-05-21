@@ -47,8 +47,8 @@ const AdminPatient = () => {
       console.log(data);
       const formattedData = data.map((item) => ({
         id: item.patient_id,
-        firstName: item.patient_name,
-        lastName: item.patient_name,
+        firstName: item.patient_fname,
+        lastName: item.patient_lname,
         age: item.age,
         gender: item.gender,
         phone: item.phone_num,
