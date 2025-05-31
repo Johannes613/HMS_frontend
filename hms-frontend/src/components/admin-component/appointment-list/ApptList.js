@@ -5,11 +5,15 @@ import CustomizedDialogs from "../../patient-component/patient-main/UpdateAppoin
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 const ApptList = () => {
+    const [fetchList,setFetch] = useState(false);
     const [appointments, setAppointments] = useState([]);
     const [apptDate, setApptDate] = useState("2022-10-01");
     const [apptStatus, setApptStatus] = useState("all");
+
+    console.log("fetch from appt list->",fetchList)
   useEffect(() => {
     const fetchFullList = async () => {
+      console.log("fetch fun called")
       try {
         const response = await fetch(
           "http://localhost:5000/appointmentStat/adminApptList",
@@ -36,7 +40,7 @@ const ApptList = () => {
       }
     };
     fetchFullList();
-  }, [apptDate, apptStatus]);
+  }, [apptDate, apptStatus,fetchList]);
   return (
     <div className="appointments-container">
       <h1 className="appointments-title"><CalendarMonthIcon className="icons-appts"/> All Appointments</h1>
@@ -76,8 +80,8 @@ const ApptList = () => {
                 <td>{appointment.appt_date.substring(0,10)}</td>
                 <td>{appointment.appt_time}</td>
                 <td>{appointment.appt_status}</td>
-                <td><AlertDialog id = {appointment.appt_id}/>
-                <CustomizedDialogs id={appointment.appt_id} /></td>
+                <td><AlertDialog id = {appointment.appt_id} fetchList = {fetchList} setFetch = {setFetch}/>
+                <CustomizedDialogs id={appointment.appt_id} fetchList = {fetchList} setFetch = {setFetch} /></td>
               </tr>
             ))}
           </tbody>

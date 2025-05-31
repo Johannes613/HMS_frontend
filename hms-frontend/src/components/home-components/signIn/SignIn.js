@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "./SignIn.css";
@@ -8,68 +8,64 @@ import { useUserContext } from "../../../context/userContext";
 
 function SignIn() {
   const navigate = useNavigate();
-  const { userRole, setUserRole } = useUserContext();
-  const { user, setUser } = useUserContext();
-  const { isLoggedIn, setIsLoggedIn } = useUserContext();
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
+  const { userRole,user, setUserRole } = useUserContext();
+  const { isLoggedIn, setIsLoggedIn,setUser} = useUserContext();
   const handleShow = () => setShow(true);
 
   const [loggedInUser, setLoggedInUser] = useState({
     email: "",
-    password: "", // added to track password input
+    password: "",
     userType: "",
   });
-
   const [loading, setLoading] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setLoggedInUser((prev) => ({ ...prev, [name]: value }));
+    console.log(name, value);
+    setLoggedInUser({ ...loggedInUser, [name]: value });
   };
-
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
     const { email, password, userType } = loggedInUser;
-
-    if (!email || !password || !userType) {
-      alert("Please fill in all fields.");
-      return;
-    }
-
-    // Admin login (frontend check only — not for production)
-    if (userType === "admin") {
-      if (email === "admin@gmail.com" && password === "admin123") {
+    setLoading(true);
+    e.preventDefault();
+    // Perform sign-in logic here
+    console.log("User Info:", loggedInUser);
+    if (userType.toLowerCase() === "admin") {
+      if (
+        email.toLowerCase() === "admin@gmail.com" &&
+        password === "admin123"
+      ) {
         setUserRole("admin");
         setUser("admin");
         setIsLoggedIn(true);
         navigate("/dashboard");
+        alert("Admin logged in successfully!");
       } else {
         alert("Invalid admin credentials.");
       }
       return; // don't fall through to backend call
     }
-
-    // Regular user login
     try {
-      setLoading(true);
-      const response = await axios.post("http://localhost:5000/four-six/login", {
-        email,
-        password,
-        userType,
-      });
-
+      const response = await axios.post(
+        "http://localhost:5000/four-six/login",
+        loggedInUser
+      );
+      setLoading(false);
       if (response.status === 200) {
+        console.log("User logged in successfully:", response.data);
         setUser(response.data[0]);
-        setUserRole(userType);
+        localStorage.setItem("user", JSON.stringify(response.data[0]));
+        localStorage.setItem("userRole", loggedInUser.userType);
+        setUserRole(loggedInUser.userType);
         setIsLoggedIn(true);
-        navigate("/dashboard");
+        // Redirect to dashboard or show success message
+        // navigate("/dashboard");
       } else {
-        alert("Login failed. Please try again.");
+        console.error("Error logging in user:", response.data);
       }
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Login failed. Please check your credentials.");
-    } finally {
+      console.log(error);
       setLoading(false);
     }
   };
@@ -79,8 +75,12 @@ function SignIn() {
       <Button variant="primary" onClick={handleShow}>
         Sign In
       </Button>
-
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Sign in</Modal.Title>
         </Modal.Header>
@@ -92,62 +92,60 @@ function SignIn() {
               </label>
               <input
                 name="email"
+                onChange={handleInputChange}
                 type="email"
                 className="form-control"
                 id="email"
                 placeholder="Enter your email"
-                onChange={handleInputChange}
-                required
               />
             </div>
-
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
               <input
                 name="password"
+                onChange={handleInputChange}
                 type="password"
                 className="form-control"
                 id="password"
                 placeholder="Enter your password"
-                onChange={handleInputChange}
-                required
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="userType" className="form-label">
+              <label htmlFor="password" className="form-label">
                 Login as
               </label>
               <select
                 name="userType"
-                id="userType"
+                id="login-as"
                 className="form-select"
                 onChange={handleInputChange}
-                required
               >
-                <option value="">Select Role</option>
+                <option value="" disabled selected>
+                  Select your role{" "}
+                </option>
                 <option value="admin">Admin</option>
                 <option value="doctor">Doctor</option>
                 <option value="patient">Patient</option>
               </select>
             </div>
           </div>
-
           <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="rememberMe" />
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="rememberMe"
+            />
             <label className="form-check-label" htmlFor="rememberMe">
               Remember me
             </label>
           </div>
-
           <div className="mb-3">
             <a href="#" className="forgot-password-link">
               Forgot password?
             </a>
           </div>
-
           <div className="mb-3">
             <p>
               Don't have an account?{" "}
@@ -157,12 +155,11 @@ function SignIn() {
             </p>
           </div>
         </Modal.Body>
-
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSubmit} disabled={loading}>
+          <Button variant="primary" onClick={handleSubmit}>
             {loading ? "Signing in..." : "Sign In"}
           </Button>
         </Modal.Footer>
@@ -172,3 +169,4 @@ function SignIn() {
 }
 
 export default SignIn;
+      

@@ -2,9 +2,10 @@
 import "./MyDashboard.css";
 import PatientProfile from "./Profile/PatientProfile";
 function MyDashboard() {
+  // const []
   return (
     <div>
-      <PatientProfile />
+      <PatientProfile  />
     </div>
   );
 }

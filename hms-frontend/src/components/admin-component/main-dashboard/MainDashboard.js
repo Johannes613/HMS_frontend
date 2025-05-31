@@ -5,118 +5,97 @@ import doc_prof from "../../../images/doc_prof.png";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import VisitTrendChart from "./VisitTrendChart";
 import TopStatCard from "./TopStatCard";
+import CreateDoctorModal from "./CreateDoctorModal";
 
 export default function MainDashboard() {
   const [totalPatients, setTotalPatients] = useState(0);
-    const [completedAppts, setCompletedAppts] = useState(0);
-    const [upcomingAppts, setUpcoming] = useState([]);
-    const [lastWeekAppts, setLastWeeksAppts] = useState(0);
-    const [medicalRecords, setMedicalRecords] = useState(0);
-    useEffect(() => {
-      const fetchAppointments= async () => {
-        try {
-          const response = await fetch('http://localhost:5000/appointmentStat/appointmentDetails',{
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ 
-              doc_id: 1
-             }),
-          });
-  
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          const result = await response.json();
-          // setData(result);
-          
-         
-          
-        } catch (error) {
-          console.error('Error fetching patient visit trend:', error);
-        } 
-      };
-      const fetchTotalPatients= async () => {
-        try{
-          const response = await fetch('http://localhost:5000/appointmentStat/totalPatients');
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          console.log('Fetched data:', response);
-          const result = await response.json();
-          setTotalPatients(result[0].total_patients);
-          console.log('Fetched data:', result[0].total_patients);
-        }catch (error) {
-          console.error('Error fetching patient number:', error);
-        }
+  const [completedAppts, setCompletedAppts] = useState(0);
+  const [upcomingAppts, setUpcoming] = useState([]);
+  const [lastWeekAppts, setLastWeeksAppts] = useState(0);
+  const [medicalRecords, setMedicalRecords] = useState(0);
+  const [showModal, setShowModal] = React.useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/appointmentDetails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ doc_id: 1 }),
+        });
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const result = await response.json();
+      } catch (error) {
+        console.error('Error fetching patient visit trend:', error);
       }
-        const fetchMedicalRecords= async () => {
-      try{
+    };
+
+    const fetchTotalPatients = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/totalPatients');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const result = await response.json();
+        setTotalPatients(result[0].total_patients);
+      } catch (error) {
+        console.error('Error fetching patient number:', error);
+      }
+    };
+
+    const fetchMedicalRecords = async () => {
+      try {
         const response = await fetch('http://localhost:5000/appointmentStat/fullMedicalRecord');
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-        console.log('Fetched data:', response);
+        if (!response.ok) throw new Error('Failed to fetch data');
         const result = await response.json();
         setMedicalRecords(result[0].count);
-      }catch (error) {
-        console.error('Error fetching cenecled:', error);
+      } catch (error) {
+        console.error('Error fetching medical records:', error);
       }
-    }
-      
-      const fetchCompletedAppts= async () => {
-        try{
-          const response = await fetch('http://localhost:5000/appointmentStat/totalCompletedAppts');
-  
-          
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          console.log('Fetched data:', response);
-          const result = await response.json();
-          setCompletedAppts(result[0].count);
-        }catch (error) {
-          console.error('Error fetching  appts:', error);
-        }
+    };
+
+    const fetchCompletedAppts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/totalCompletedAppts');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const result = await response.json();
+        setCompletedAppts(result[0].count);
+      } catch (error) {
+        console.error('Error fetching completed appointments:', error);
       }
-      const fetchUpcomingAppts= async () => {
-        try{
-          const response = await fetch('http://localhost:5000/appointmentStat/totalUpcomingAppts');
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          console.log('Fetched data:', response);
-          const result = await response.json();
-          setUpcoming(result[0].count);
-        }catch (error) {
-          console.error('Error fetching cenecled:', error);
-        }
+    };
+
+    const fetchUpcomingAppts = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/totalUpcomingAppts');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const result = await response.json();
+        setUpcoming(result[0].count);
+      } catch (error) {
+        console.error('Error fetching upcoming appointments:', error);
       }
-      const fetchLastWeekList= async () => {
-        try{
-          const response = await fetch('http://localhost:5000/appointmentStat/lastWeekAppts');
-  
-          
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          console.log('Fetched data:', response);
-          const result = await response.json();
-          setLastWeeksAppts(result[0].count);
-        }catch (error) {
-          console.error('Error fetching  last week appts:', error);
-        }
+    };
+
+    const fetchLastWeekList = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/appointmentStat/lastWeekAppts');
+        if (!response.ok) throw new Error('Failed to fetch data');
+        const result = await response.json();
+        setLastWeeksAppts(result[0].count);
+      } catch (error) {
+        console.error('Error fetching last week appointments:', error);
       }
-      fetchAppointments();
-      fetchTotalPatients();
-      fetchCompletedAppts();
-      fetchLastWeekList();
-      fetchUpcomingAppts();
-      fetchMedicalRecords();
-    }, []);
-  
-  
+    };
+
+    fetchAppointments();
+    fetchTotalPatients();
+    fetchCompletedAppts();
+    fetchLastWeekList();
+    fetchUpcomingAppts();
+    fetchMedicalRecords();
+  }, []);
+
   const [clinicStats] = useState({
     name: "Yohannis Adamu",
     activePlan: "Clinic Premium Subscription",
@@ -154,9 +133,18 @@ export default function MainDashboard() {
     <div className="dashboard-container">
       {/* Header Section */}
       <div className="dashboard-header">
-        <h1 style={{ color: "black" }}> <DashboardIcon className="icons-appts"/> Admin Dashboard</h1>
+        <h1 style={{ color: "black" }}>
+          <DashboardIcon className="icons-appts" /> Admin Dashboard
+        </h1>
         <div className="dashboard-profile">
-          <img src={doc_prof} alt="Profile" className="profile-image" />
+          {/* <img src={doc_prof} alt="Profile" className="profile-image" /> */}
+          <div className="text-center" style={{ marginTop: "20px" }}>
+          <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            Add Doctor
+          </button>
+        </div>
+         {/* <button onClick={openModal}>Add Doctor</button> */}
+      <CreateDoctorModal show={showModal} onClose={closeModal} />
         </div>
       </div>
 
@@ -166,16 +154,13 @@ export default function MainDashboard() {
           {/* <ProgressAnalytics /> */}
         </div>
       </div>
-      
+
       <div className="trend">
-        <TopStatCard/>
+        <TopStatCard />
       </div>
       <div className="trend">
-        <VisitTrendChart/>
+        <VisitTrendChart />
       </div>
-      
-
-
 
       {/* Usage Section */}
       <div className="usage-section">
@@ -224,6 +209,9 @@ export default function MainDashboard() {
             <h4>{calculateAverage(clinicPerformance.efficiencyScores, "score")}</h4>
           </div>
         </div>
+
+        {/* Add Doctor Button */}
+        
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
 import axios from "axios";
 
-export default function AlertDialog({ id }) {
+export default function AlertDialog({ id, fetchList,setFetch}) {
   const [open, setOpen] = useState(false);
   const [appointmentId, setAppointmentId] = useState(id);
   console.log(appointmentId);
@@ -26,10 +26,13 @@ export default function AlertDialog({ id }) {
       const response = await axios.delete(
         "http://localhost:5000/appointment/" + appointmentId
       );
+      setFetch(prev => !prev);
       console.log(response.data);
       if (response.status === 200) {
+        
         console.log("Appointment deleted successfully");
         alert("Appointment deleted successfully");
+        
         // Optionally, you can refresh the appointment list or perform any other action
       } else {
         console.error("Failed to delete appointment");
@@ -37,7 +40,7 @@ export default function AlertDialog({ id }) {
     } catch (error) {
       console.error("Error deleting appointment:", error);
     }
-     window.location.reload();
+   
   };
 
   return (

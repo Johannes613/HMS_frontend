@@ -65,7 +65,7 @@ export default function MedicalRecordTable() {
         id: index + 1,
         date: record.date.split("T")[0],
         firstName: record.patient_fname,
-        lastName: record.patient_fname,
+        lastName: record.patient_lname,
         doctor: record.doc_fname,
         treatment: record.description,
         diagnosis: record.diagnosis,

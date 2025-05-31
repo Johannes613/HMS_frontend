@@ -4,6 +4,7 @@ import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import EventIcon from "@mui/icons-material/Event";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import { Logout } from "@mui/icons-material";
 
 function SideNavList() {
   let sideNav = null;
@@ -31,6 +32,7 @@ function SideNavList() {
 
         { segment: "apptList", title: "Appointments", icon: <EventIcon /> },
         { segment: "inventory", title: "Inventory", icon: <InventoryIcon /> },
+        { segment: "logout", title: "Logout", icon: <Logout /> },
         // { segment: "doctor", title: "Doctor" },
         // { segment: "patient", title: "Patient" },
         // { segment: "Imagegenerator", title: "Image Generator" },
@@ -43,6 +45,8 @@ function SideNavList() {
         { segment: "doctorAppointment", title: "Appointments",icon: <EventIcon />},
         { segment: "patientList", title: "Patients",icon:<LocalHospitalIcon /> },
         { segment: "medicaRecordList", title: "Medical Records",icon: <InventoryIcon />  },
+           { segment: "logout", title: "Logout", icon: <Logout /> },
+
         // { segment: "patient", title: "Patient" },
         // { segment: "Imagegenerator", title: "Image Generator" },
       ];
@@ -61,6 +65,12 @@ function SideNavList() {
           title: "Medical Records",
           icon: <EventIcon />,
         },
+        {
+          segment: "book-appointment",
+          title: "Book Appointment",
+          icon: <EventIcon />,
+        },
+           { segment: "logout", title: "Logout", icon: <Logout />  },
       ];
       break;
     default:

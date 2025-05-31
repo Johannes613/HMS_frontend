@@ -1,4 +1,4 @@
-import React, { act, useEffect } from "react";
+import React, { act, useEffect, useState } from "react";
 import patientImg from "../../../../assets/p1.png";
 import "./PatientProfile.css";
 import MyProfile from "./MyProfile";
@@ -7,16 +7,18 @@ import PatientMain from "../PatientMain";
 import { useUserContext } from "../../../../context/userContext";
 function PatientProfile() {
   const [activeTab, setActiveTab] = React.useState("profile");
-  const {user}=useUserContext();
+    const [patientInfo,setPatientInfo] = useState(JSON.parse(localStorage.getItem("user")))
+    const [isUpdated,setIsUpdated] = useState(false);
   useEffect(() => {
+      setPatientInfo(JSON.parse(localStorage.getItem("user")));
     console.log(activeTab);
-  }, [activeTab]);
+  }, [activeTab,isUpdated]);
   return (
     <div className="patient-profile-container">
       <div className="patient-profile">
         <div className="patient-profile-img-container">
           <img src={patientImg} alt="patient" className="patient-profile-img" />
-          <h2>{user.patient_fname} {user.patient_lname}</h2>
+          <h2>{patientInfo.patient_fname} {patientInfo.patient_lname}</h2>
         </div>
 
         <div className="tabs">
@@ -36,7 +38,7 @@ function PatientProfile() {
         </div>
       </div>
       {/* dynamically load components here */}
-      {activeTab === "profile" && <MyProfile />}
+      {activeTab === "profile" && <MyProfile isUpdated= {isUpdated} setIsUpdated = {setIsUpdated}  />}
       {activeTab === "appoint" && <PatientMain />}
       {activeTab === "medical_history" && <MedicalRecord />}
     </div>

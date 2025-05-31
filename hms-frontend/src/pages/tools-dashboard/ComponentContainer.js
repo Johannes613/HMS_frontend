@@ -15,6 +15,8 @@ import ApptList from "../../components/admin-component/appointment-list/ApptList
 
 import AdminInventory from "../../components/admin-component/admin-inventory/AdminInventory";
 import BillingInterface from "../../components/patient-component/patient-main/BillingInterface";
+import BookAppt from "../../components/patient-component/patient-main/BookAppointment/BookAppt";
+import LogOut from "../../components/home-components/LogOut.js";
 
 const adminComponentList = {
   "/admin": <MainDashboard />,
@@ -22,6 +24,7 @@ const adminComponentList = {
   "/admin-patient": <AdminPatient />,
   "/admin-supplier": <AdminSupplier />,
   "/inventory": <AdminInventory />,
+  "/logout": <LogOut/>,
 };
 
 const doctorComponentList = {
@@ -29,12 +32,17 @@ const doctorComponentList = {
   "/doctorAppointment": <AppointmentList />,
   "/patientList": <PatientList />,
   "/medicaRecordList": <MedicalRecordList />,
+    "/logout": <LogOut/>,
+
 };
 const patientComponentList = {
   "/my-dashboard": <MyDashboard />,
   "/patient": <PatientMain />,
   "/medical-record": <MedicalRecord />,
   "/billing-interface": <BillingInterface/>,
+  "/book-appointment": <BookAppt/>,
+    "/logout": <LogOut/>,
+
 };
 function Componentcontainer({ pathname }) {
   const { userRole } = useUserContext();

@@ -1,9 +1,13 @@
-import { useUserContext } from "../../../../context/userContext";
+import { useEffect, useState } from "react";
 import UpdateProfileModal from "../UpdateProfileModal";
 import PersonIcon from "@mui/icons-material/Person";
-function MyProfile() {
-  const { user } = useUserContext();
-  console.log(user + " from patient profile");
+function MyProfile({isUpdated,setIsUpdated}) {
+  // const [isUpdated,setIsUpdated] = useState(false);
+  const [patientInfo,setPatientInfo] = useState(JSON.parse(localStorage.getItem("user")))
+
+  useEffect(()=>{
+   setPatientInfo(JSON.parse(localStorage.getItem("user")));
+  },[isUpdated])
   return (
     <div className="my_profile">
       <div className="profile-header">
@@ -13,40 +17,28 @@ function MyProfile() {
 
       <div className="personal-info-details">
         <p>
-          First Name: <span>{user.patient_fname}</span>
+          First Name: <span>{patientInfo?.patient_fname}</span>
         </p>
         <p>
-          Last Name: <span>{user.patient_lname}</span>
+          Last Name: <span>{patientInfo?.patient_lname}</span>
         </p>
         <p>
-          Gender: <span>{user.gender}</span>
+          Gender: <span>{patientInfo?.gender}</span>
         </p>
         <p>
-          Date of Birth: <span>{user.birth_date}</span>
+          Date of Birth: <span>{patientInfo?.birth_date}</span>
         </p>
         <p>
-          Age:<span>{user.age}</span>
+          Age:<span>{patientInfo?.age}</span>
         </p>
         <p>
-          Email: <span>{user.email}</span>
+          Email: <span>{patientInfo?.email}</span>
         </p>
         <p>
-          Phone: <span>{user.phone_num}</span>
-        </p>
-        <p>
-          Address: <span>123 Main St, City, Country</span>
-        </p>
-        <p>
-          Primary Care Physician: <span>Dr. Smith</span>
-        </p>
-        <p>
-          Physician Contact: <span>555-123-4567</span>
-        </p>
-        <p>
-          Last Visit Date: <span>2023-10-01</span>
+          Phone: <span>{patientInfo?.phone_num}</span>
         </p>
         <div className="update-prof-btn">
-          <UpdateProfileModal />
+          <UpdateProfileModal isUpdated= {isUpdated} setIsUpdated = {setIsUpdated} />
         </div>
       </div>
     </div>

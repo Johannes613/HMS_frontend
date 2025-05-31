@@ -15,22 +15,27 @@ import {
   Bar,
 } from "recharts";
 import TreatmentBarChart from "./TreatmentBarChart";
+import CreatePatientModal from "./CreatePatientModal";
 const AdminPatient = () => {
   const [patients, setPatients] = useState([]);
   const [formattedData, setFormattedData] = useState([]);
+  const [isCreated,setCreated]=useState(false)
   const [year, setYear] = useState("2025");
+  const [showModal, setShowModal] = React.useState(false);
+
+  const openModal = () => setShowModal(true);
+  const closeModal = () => setShowModal(false);
 
   const [rows, setRows] = useState([]);
   const [gender, setGender] = useState("all");
   const [ageGroup, setAgeGroup] = useState("all");
   const [patientsByAge, setPatientsByAge] = useState([]);
 
-
   // const chartData = transformDataForChart(rawData);
   useEffect(() => {
     fetchPatients();
     fetchPatientsByAge();
-  }, [ageGroup, gender]);
+  }, [ageGroup, gender,isCreated]);
 
   const fetchPatients = async () => {
     try {
@@ -53,7 +58,7 @@ const AdminPatient = () => {
         gender: item.gender,
         phone: item.phone_num,
         email: item.email,
-        birthdate: item.birth_date,
+        birthdate: item.birth_date.split("T")[0],
       }));
       setPatients(formattedData);
       setRows(formattedData);
@@ -79,7 +84,6 @@ const AdminPatient = () => {
       console.log(error);
     }
   };
-
 
   return (
     <div className="patients-container">
@@ -115,6 +119,15 @@ const AdminPatient = () => {
           <option value="50">Greater than 50</option>
           <option value="65">Greater than 65</option>
         </select>
+        <div>
+          <div className="text-center" style={{ marginTop: "20px" }}>
+          <button className="btn btn-primary" onClick={() => setShowModal(true)}>
+            Add Patient
+          </button>
+        </div>
+         {/* <button onClick={openModal}>Add Doctor</button> */}
+      <CreatePatientModal show={showModal} onClose={closeModal} isCreated={isCreated} setCreated={setCreated} />
+        </div>
       </div>
 
       <PatientDataTable rows={rows} />
@@ -147,7 +160,7 @@ const AdminPatient = () => {
               Select year
             </label>
             <select
-              className="filter-select" 
+              className="filter-select"
               onChange={(e) => setYear(e.target.value)}
             >
               <option value="2020">2020</option>
@@ -155,7 +168,9 @@ const AdminPatient = () => {
               <option value="2022">2022</option>
               <option value="2023">2023</option>
               <option value="2024">2024</option>
-              <option value="2025" selected>2025</option>
+              <option value="2025" selected>
+                2025
+              </option>
             </select>
           </div>
           <TreatmentBarChart year={year} />

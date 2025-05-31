@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import "./MyDashboard.css";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { Prev } from "react-bootstrap/esm/PageItem";
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -20,7 +21,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedDialogs({ id }) {
+export default function CustomizedDialogs({ id, fetchList,setFetch}) {
   const [appointmentId, setAppointmentId] = React.useState(id);
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState("");
@@ -44,10 +45,12 @@ export default function CustomizedDialogs({ id }) {
         }
       );
       console.log(response.data);
+      setFetch(!fetchList);
+      console.log("fetch from update->",fetchList)
     } catch (error) {
       console.error("Error updating appointment:", error);
     }
-    window.location.reload();
+  
     
 
     

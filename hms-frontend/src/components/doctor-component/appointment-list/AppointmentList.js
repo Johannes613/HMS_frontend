@@ -9,6 +9,7 @@ const AppointmentList = () => {
     const [appointments, setAppointments] = useState([]);
     const [apptDate, setApptDate] = useState("2022-10-01");
     const [apptStatus, setApptStatus] = useState("all");
+    const [fetchList,setFetch] = useState(false);
   useEffect(() => {
     const fetchFullList = async () => {
       try {
@@ -36,7 +37,7 @@ const AppointmentList = () => {
       }
     };
     fetchFullList();
-  }, [apptDate, apptStatus]);
+  }, [apptDate, apptStatus,fetchList]);
   return (
     <div className="appointments-container">
       <h1 className="appointments-title"><CalendarMonthIcon className="icons-appts"/>All Appointments</h1>
@@ -76,8 +77,8 @@ const AppointmentList = () => {
                 <td>{appointment.appt_date.substring(0,10)}</td>
                 <td>{appointment.appt_time}</td>
                 <td>{appointment.appt_status}</td>
-                <td><AlertDialog id = {appointment.appt_id}/>
-                <CustomizedDialogs id={appointment.appt_id} /></td>
+                <td><AlertDialog id = {appointment.appt_id} fetchList={fetchList} setFetch={setFetch}/>
+                <CustomizedDialogs id={appointment.appt_id} fetchList={fetchList} setFetch={setFetch} /></td>
 
               </tr>
             ))}

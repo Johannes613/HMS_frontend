@@ -67,6 +67,7 @@ const paginationModel = { page: 0, pageSize: 5 };
 export default function DataTable() {
   const [rows, setRows] = useState([]);
   const { user } = useUserContext();
+  const [patient_id,setPatientId] = useState(JSON.parse(localStorage.getItem("user")).patient_id);
 
   useEffect(() => {
     fetchData();
@@ -75,7 +76,7 @@ export default function DataTable() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/appointment/${user.patient_id}`
+        `http://localhost:5000/appointment/${patient_id}`
       );
       const data = response.data;
       console.log(data);
