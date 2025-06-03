@@ -39,7 +39,7 @@ const patientComponentList = {
   "/my-dashboard": <MyDashboard />,
   "/patient": <PatientMain />,
   "/medical-record": <MedicalRecord />,
-  "/billing-interface": <BillingInterface/>,
+  "/billing": <BillingInterface/>,
   "/book-appointment": <BookAppt/>,
     "/logout": <LogOut/>,
 

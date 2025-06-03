@@ -2,34 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./BillingInterface.css";
 import ReceiptIcon from "@mui/icons-material/Receipt";
 import { jsPDF } from "jspdf";
+import { useUserContext } from "../../../context/userContext";
 
 const BillingInterface = () => {
-    
   const [service, setService] = useState("consultation");
   const [cost, setCost] = useState(200.0);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [insuranceCoverage, setInsuranceCoverage] = useState(0.0);
   const [patientInfo, setPatientInfo] = useState([]);
 
-  useEffect(()=>{
-        const fetchPatientInfo = async () => {
-            try {
-                const response = await fetch('http://localhost:5000/trendData/patientInfo');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch data');
-                }
-                const result = await response.json();
-                setPatientInfo(result);
-                console.log('Fetched data:', result);
-            } catch (error) {
-                console.error('Error fetching patient info:', error);
-            }
-        }
-        fetchPatientInfo();
-    },[])
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setPatientInfo(user);
+  }, []);
 
-  const patientName = (patientInfo[0]?.first_name + " " + patientInfo[0]?.last_name) || "John Doe";
-  const provider = patientInfo[0]?.insurance_name || "ABC Insurance";
+  const patientName =
+    patientInfo.patient_fname + " " + patientInfo.patient_lname || "John Doe";
+  const provider = patientInfo.insurance || "ABC Insurance";
   const coveragePercent = parseFloat(patientInfo[0]?.insurance_coverage || 50);
 
   const handleCalculate = () => {

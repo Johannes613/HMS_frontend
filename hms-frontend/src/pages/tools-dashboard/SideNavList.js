@@ -70,6 +70,11 @@ function SideNavList() {
           title: "Book Appointment",
           icon: <EventIcon />,
         },
+        {
+          segment: "billing",
+          title: "Billing",
+          icon: <EventIcon />,
+        },
            { segment: "logout", title: "Logout", icon: <Logout />  },
       ];
       break;
